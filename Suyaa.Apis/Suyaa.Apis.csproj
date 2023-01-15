@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Suyaa.Microservice" Version="1.0.2212.1" />
+    <PackageReference Include="Suyaa.Microservice" Version="1.1.2301.3" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -26,6 +28,14 @@ namespace Suyaa.Apis.Window
         protected override void OnConfigureServices(IServiceCollection services)
         {
             base.OnConfigureServices(services);
+        }
+
+        protected override void OnConfigure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            base.OnConfigure(app, env);
+
+            // 使用静态文件
+            app.UseStaticFiles();
         }
     }
 }
