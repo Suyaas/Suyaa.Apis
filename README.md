@@ -26,6 +26,8 @@ A freely extensible data api service based on .Net 6
 
 ## 低代码工作模式
 
++ 以UI配置的方式管理用户
++ 以UI配置的方式管理用户权限
 + 以UI配置的方式管理数据库信息
 + 以UI配置的方式管理场景配置
 + 以UI配置的方式管理DLL加载
