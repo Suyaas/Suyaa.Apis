@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Suyaa.Microservice.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,9 @@ namespace Suyaa.Apis.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetInfo")]
-        public async Task<string> GetInfo()
+        public async Task<ApiResult<string>> GetInfo()
         {
-            
+            await Task.Delay(1);
             return "User";
         }
     }

@@ -20,7 +20,7 @@ namespace Suyaa.Apis.Basic.Extensions
         /// <param name="app"></param>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseDefaultPage(this IApplicationBuilder app, string url) => app.UseMiddleware<ApisMiddleware>(new object[] { url });
+        public static IApplicationBuilder UseDefaultPage(this IApplicationBuilder app, string url) => app.UseMiddleware<DefaultPageMiddleware>(new object[] { url });
 
         /// <summary>
         /// 使用令牌交互
