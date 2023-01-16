@@ -1,0 +1,49 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.page-left {
+    float: left;
+    width: 230px;
+    height: 100%;
+    background-color: #222d32;
+}
+
+.page-logo {
+    width: 100%;
+    height: 50px;
+    background-color: #367fa9;
+}
+
+.page-menu {
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+.page-right {
+    float: right;
+    width: calc(100% - 230px);
+    height: 100%;
+    background-color: #fff;
+}
+
+.page-nav {
+    width: 100%;
+    height: 50px;
+    background-color: #3c8dbc;
+}
+
+.page-main {
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+.clear {
+    display: block;
+    clear: both;
+}
