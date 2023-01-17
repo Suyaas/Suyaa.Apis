@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suyaa.Apis.Window", "Suyaa.Apis.Window\Suyaa.Apis.Window.csproj", "{6F56A9E7-0475-486D-91CA-1F22A6964FD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suyaa.Apis.Windows", "Suyaa.Apis.Window\Suyaa.Apis.Windows.csproj", "{6F56A9E7-0475-486D-91CA-1F22A6964FD6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suyaa.Apis", "Suyaa.Apis\Suyaa.Apis.csproj", "{01A0DFF8-13FC-4E7E-AA6B-021C71BEC398}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suyaa.Apis.UI", "Suyaa.Apis.UI\Suyaa.Apis.UI.csproj", "{9C2AF859-89E7-4C7B-B4D6-3377DD0738C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suyaa.Apis.Basic", "Suyaa.Apis.Basic\Suyaa.Apis.Basic.csproj", "{85ACC553-E513-4405-A004-15016B271E49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suyaa.Apis.Basic", "Suyaa.Apis.Basic\Suyaa.Apis.Basic.csproj", "{85ACC553-E513-4405-A004-15016B271E49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{31F5E41D-6A70-4E03-A7BA-B392998F87F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "base", "base", "{624EABCB-1A42-4007-A7A3-2DB6AEA486A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "editor", "editor", "{ABB13A2D-7308-42EC-B894-A33B88662DAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suyaa.Apis.Modules.Base", "modules\base\Suyaa.Apis.Modules.Base\Suyaa.Apis.Modules.Base.csproj", "{99ECF06F-E470-4F0A-9681-5F73AB82A959}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +41,18 @@ Global
 		{85ACC553-E513-4405-A004-15016B271E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85ACC553-E513-4405-A004-15016B271E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85ACC553-E513-4405-A004-15016B271E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99ECF06F-E470-4F0A-9681-5F73AB82A959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99ECF06F-E470-4F0A-9681-5F73AB82A959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99ECF06F-E470-4F0A-9681-5F73AB82A959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99ECF06F-E470-4F0A-9681-5F73AB82A959}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{624EABCB-1A42-4007-A7A3-2DB6AEA486A2} = {31F5E41D-6A70-4E03-A7BA-B392998F87F8}
+		{ABB13A2D-7308-42EC-B894-A33B88662DAE} = {31F5E41D-6A70-4E03-A7BA-B392998F87F8}
+		{99ECF06F-E470-4F0A-9681-5F73AB82A959} = {624EABCB-1A42-4007-A7A3-2DB6AEA486A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8496237A-9379-46E4-99BC-EE2C7550F02F}

@@ -14,7 +14,7 @@ using Suyaa.Apis.Extensions;
 using Suyaa.Apis.UI.Extensions;
 using Suyaa.Apis.Basic.Extensions;
 
-namespace Suyaa.Apis
+namespace Suyaa.Apis.Windows
 {
     /// <summary>
     /// 启动器
@@ -31,6 +31,7 @@ namespace Suyaa.Apis
         {
             base.OnInitialize();
             this.Import<ModuleStartup>();
+            this.Import<Modules.Base.ModuleStartup>();
         }
 
         protected override void OnConfigureServices(IServiceCollection services)

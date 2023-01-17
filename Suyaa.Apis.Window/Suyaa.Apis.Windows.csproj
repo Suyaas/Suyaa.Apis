@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\modules\base\Suyaa.Apis.Modules.Base\Suyaa.Apis.Modules.Base.csproj" />
     <ProjectReference Include="..\Suyaa.Apis.Basic\Suyaa.Apis.Basic.csproj" />
   </ItemGroup>
 
