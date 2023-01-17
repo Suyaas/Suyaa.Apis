@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Suyaa.Microservice" Version="1.1.2301.5" />
+    <PackageReference Include="Egg.EFCore" Version="16.1.2301.8" />
+    <PackageReference Include="Suyaa.Microservice" Version="1.1.2301.6" />
   </ItemGroup>
 
 </Project>
