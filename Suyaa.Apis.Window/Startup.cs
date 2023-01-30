@@ -32,6 +32,7 @@ namespace Suyaa.Apis.Windows
             base.OnInitialize();
             this.Import<ModuleStartup>();
             this.Import<Modules.Base.ModuleStartup>();
+            this.Import<Modules.Lark.ModuleStartup>();
         }
 
         protected override void OnConfigureServices(IServiceCollection services)

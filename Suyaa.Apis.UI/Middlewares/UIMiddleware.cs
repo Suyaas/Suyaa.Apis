@@ -67,9 +67,10 @@ namespace Suyaa.Apis.UI.Middlewares
                 Debug.WriteLine($"[UI] Path: {path}");
                 if (!egg.IO.CheckFileExists(path))
                 {
+                    context.Response.Clear();
                     context.Response.StatusCode = 404;
                     context.Response.ContentType = "text/plain";
-                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404"));
+                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404."));
                     return;
                 }
                 await Render(context.Response, path, "text/html");
@@ -86,14 +87,44 @@ namespace Suyaa.Apis.UI.Middlewares
                 await Render(context.Response, path, "text/html");
             }
             // 脚本路由
+            if (url.StartsWith("/ui/"))
+            {
+                string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(4));
+                if (!egg.IO.CheckFileExists(path))
+                {
+                    context.Response.Clear();
+                    context.Response.StatusCode = 404;
+                    context.Response.ContentType = "text/plain";
+                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404."));
+                    return;
+                }
+                string ext = System.IO.Path.GetExtension(path).ToLower();
+                switch (ext)
+                {
+                    case ".js":
+                        await Render(context.Response, path, "text/javascript");
+                        break;
+                    case ".css":
+                        await Render(context.Response, path, "text/css");
+                        break;
+                    default:
+                        context.Response.Clear();
+                        context.Response.StatusCode = 403;
+                        context.Response.ContentType = "text/plain";
+                        await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes($"File '{ext}' not support."));
+                        break;
+                }
+            }
+            // 脚本路由
             if (url.StartsWith("/js/"))
             {
                 string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(4) + ".js");
                 if (!egg.IO.CheckFileExists(path))
                 {
+                    context.Response.Clear();
                     context.Response.StatusCode = 404;
                     context.Response.ContentType = "text/plain";
-                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404"));
+                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404."));
                     return;
                 }
                 await Render(context.Response, path, "text/javascript");
@@ -104,9 +135,10 @@ namespace Suyaa.Apis.UI.Middlewares
                 string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(5) + ".css");
                 if (!egg.IO.CheckFileExists(path))
                 {
+                    context.Response.Clear();
                     context.Response.StatusCode = 404;
                     context.Response.ContentType = "text/plain";
-                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404"));
+                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404."));
                     return;
                 }
                 await Render(context.Response, path, "text/css");

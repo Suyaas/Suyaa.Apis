@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Suyaa.Apis\Suyaa.Apis.csproj" />
+    <ProjectReference Include="..\..\base\Suyaa.Apis.Modules.Base\Suyaa.Apis.Modules.Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Cores\Engines\Dtos\" />
+  </ItemGroup>
+
+</Project>
