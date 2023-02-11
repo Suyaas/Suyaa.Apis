@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Egg.EFCore.PostgreSQL" Version="16.1.2301.12" />
-    <PackageReference Include="Suyaa.Microservice" Version="1.2.2302.7" />
+    <ProjectReference Include="..\..\..\Suyaa.Apis\Suyaa.Apis.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Cores\" />
+    <Folder Include="Entities\" />
   </ItemGroup>
 
 </Project>
