@@ -25,8 +25,7 @@
 					"postgresql.dd.plain.string": "false",
 					"postgresql.dd.tag.string": "false"
 				},
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		},
 		"postgres-jdbc-18627aa098e-59867aa5e95aa497": {
@@ -53,6 +52,19 @@
 					"postgresql.dd.plain.string": "false",
 					"postgresql.dd.tag.string": "false"
 				},
+				"auth-model": "native"
+			}
+		},
+		"sqlite_jdbc-186748a39e9-3caa23797af9ede2": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "test.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "E:\\test.db",
+				"url": "jdbc:sqlite:E:\\test.db",
+				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}
 			}
