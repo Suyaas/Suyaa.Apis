@@ -31,7 +31,7 @@ namespace Suyaa.Apis.Linux
         {
             base.OnInitialize();
             this.Import<ModuleStartup>();
-            this.Import<Modules.Base.ModuleStartup>();
+            this.Import<Base.Apps.ModuleStartup>();
             this.Import<Modules.Lark.ModuleStartup>();
         }
 

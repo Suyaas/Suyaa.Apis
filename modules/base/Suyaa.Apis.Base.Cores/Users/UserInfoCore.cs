@@ -1,21 +1,26 @@
-﻿using Suyaa.Microservice.Dependency;
+﻿using Suyaa.Apis.Base.Entities.Users;
+using Suyaa.Microservice.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Suyaa.Apis.Modules.Base.Cores.Users
+namespace Suyaa.Apis.Base.Cores.Users
 {
     /// <summary>
     /// 用户信息
     /// </summary>
-    public interface IUserInfoCore : IServiceCore
+    public class UserInfoCore : IUserInfoCore
     {
         /// <summary>
         /// 获取信息
         /// </summary>
         /// <returns></returns>
-        Task<string> GetInfo();
+        public async Task<string> GetInfo()
+        {
+            await Task.Delay(1);
+            return "UserInfoCore";
+        }
     }
 }

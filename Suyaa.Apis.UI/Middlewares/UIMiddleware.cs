@@ -65,7 +65,7 @@ namespace Suyaa.Apis.UI.Middlewares
             {
                 string path = egg.IO.GetExecutionPath(_path + "/404.html");
                 Debug.WriteLine($"[UI] Path: {path}");
-                if (!egg.IO.CheckFileExists(path))
+                if (!egg.IO.FileExists(path))
                 {
                     context.Response.StatusCode = 404;
                     context.Response.ContentType = "text/plain";
@@ -74,11 +74,31 @@ namespace Suyaa.Apis.UI.Middlewares
                 }
                 await Render(context.Response, path, "text/html");
             }
+            // 静态直接输出
+            if (url.StartsWith("/ui/"))
+            {
+                string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(4));
+                if (!egg.IO.FileExists(path))
+                {
+                    context.Response.StatusCode = 404;
+                    return;
+                }
+                string ext = System.IO.Path.GetExtension(path).ToLower();
+                string mime = string.Empty;
+                switch (ext)
+                {
+                    case ".html": mime = "text/html"; break;
+                    case ".css": mime = "text/css"; break;
+                    case ".js": mime = "text/javascript"; break;
+                    default: mime = "application/octet-stream"; break;
+                }
+                await Render(context.Response, path, mime);
+            }
             // 页面路由
             if (url.StartsWith("/page/"))
             {
                 string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(6) + ".html");
-                if (!egg.IO.CheckFileExists(path))
+                if (!egg.IO.FileExists(path))
                 {
                     context.Response.Redirect("/page/404");
                     return;
@@ -89,7 +109,7 @@ namespace Suyaa.Apis.UI.Middlewares
             if (url.StartsWith("/js/"))
             {
                 string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(4) + ".js");
-                if (!egg.IO.CheckFileExists(path))
+                if (!egg.IO.FileExists(path))
                 {
                     context.Response.StatusCode = 404;
                     context.Response.ContentType = "text/plain";
@@ -102,7 +122,7 @@ namespace Suyaa.Apis.UI.Middlewares
             if (url.StartsWith("/css/"))
             {
                 string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(5) + ".css");
-                if (!egg.IO.CheckFileExists(path))
+                if (!egg.IO.FileExists(path))
                 {
                     context.Response.StatusCode = 404;
                     context.Response.ContentType = "text/plain";

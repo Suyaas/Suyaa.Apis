@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Egg;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
@@ -6,8 +7,12 @@ namespace Suyaa.Apis.Linux
 {
     internal class Program
     {
+        // 环境变量关键字
+        private const string KEY_ASPNETCORE_ENVIRONMENT = "ASPNETCORE_ENVIRONMENT";
+
         static void Main(string[] args)
         {
+            if (Environment.GetEnvironmentVariable(KEY_ASPNETCORE_ENVIRONMENT).IsNullOrWhiteSpace()) Environment.SetEnvironmentVariable(KEY_ASPNETCORE_ENVIRONMENT, "Production");
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)

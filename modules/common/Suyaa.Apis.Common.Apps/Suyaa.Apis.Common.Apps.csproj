@@ -4,16 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Cores\" />
-    <Folder Include="Entities\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\base\Suyaa.Apis.Base.Cores\Suyaa.Apis.Base.Cores.csproj" />
+    <ProjectReference Include="..\Suyaa.Apis.Common.Cores\Suyaa.Apis.Common.Cores.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Suyaa.Apis.Modules.Base.Cores.Users
+namespace Suyaa.Apis.Base.Cores.Users
 {
     /// <summary>
     /// 用户信息

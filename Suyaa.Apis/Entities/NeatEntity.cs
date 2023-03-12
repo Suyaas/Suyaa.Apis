@@ -9,51 +9,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Egg.EFCore.Dbsets;
+using Egg.Data.Entities;
 
 namespace Suyaa.Apis.Entities
 {
     /// <summary>
     /// 整齐化数据实例
     /// </summary>
-    public abstract class NeatEntity : GuidKeyEntity
+    public abstract class NeatEntity : SimpleEntity, IModificationEntity, IDeletionEntity
     {
         /// <summary>
-        /// 创建用户Id
+        /// 最后修改用户编号
         /// </summary>
-        [Column("creator_user_id", TypeName = "varchar(50)")]
-        [StringLength(50)]
-        [Description("创建用户Id")]
-        public virtual string CreatorUserId { get; set; } = "";
+        [Column("last_modifier_user_no")]
+        [Description("最后修改用户编号")]
+        public virtual int LastModifierUserNo { get; set; } = 0;
 
         /// <summary>
-        /// 创建用户Id
-        /// </summary>
-        [Column("creation_time", TypeName = "timestamp without time zone")]
-        [Description("创建时间")]
-        public virtual DateTime CreationTime { get; set; }
-
-        /// <summary>
-        /// 最后更新用户Id
-        /// </summary>
-        [Column("last_modifier_user_id", TypeName = "varchar(50)")]
-        [StringLength(50)]
-        [Description("最后更新用户Id")]
-        public virtual string LastModifierUserId { get; set; } = "";
-
-        /// <summary>
-        /// 最后更新时间
+        /// 最后修改时间
         /// </summary>
         [Column("last_modification_time", TypeName = "timestamp without time zone")]
         [Description("最后更新时间")]
         public virtual DateTime LastModificationTime { get; set; }
 
         /// <summary>
-        /// 删除用户Id
+        /// 删除用户编号
         /// </summary>
-        [Column("deleter_user_id", TypeName = "varchar(50)")]
+        [Column("deleter_user_no")]
         [StringLength(50)]
-        [Description("删除用户Id")]
-        public virtual string? DeleterUserId { get; set; }
+        [Description("删除用户编号")]
+        public virtual int? DeleterUserNo { get; set; }
 
         /// <summary>
         /// 删除时间

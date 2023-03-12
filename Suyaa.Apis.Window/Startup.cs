@@ -13,6 +13,7 @@ using static System.Net.Mime.MediaTypeNames;
 using Suyaa.Apis.Extensions;
 using Suyaa.Apis.UI.Extensions;
 using Suyaa.Apis.Basic.Extensions;
+using System.Security.AccessControl;
 
 namespace Suyaa.Apis.Windows
 {
@@ -31,7 +32,9 @@ namespace Suyaa.Apis.Windows
         {
             base.OnInitialize();
             this.Import<ModuleStartup>();
-            this.Import<Modules.Base.ModuleStartup>();
+            this.Import<Common.Apps.ModuleStartup>();
+            this.Import<Base.Apps.ModuleStartup>();
+            this.Import<Modules.Lark.ModuleStartup>();
         }
 
         protected override void OnConfigureServices(IServiceCollection services)

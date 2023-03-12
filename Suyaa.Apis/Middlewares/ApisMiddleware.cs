@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Egg;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Suyaa.Microservice.Exceptions;
 using Suyaa.Microservice.Results;
@@ -47,7 +48,9 @@ namespace Suyaa.Apis.Middlewares
                 int apiSceneIndex = apiUrl.IndexOf('/');
                 context.Response.StatusCode = 200;
                 context.Response.ContentType = "text/plain";
-                await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404"));
+                ApiResult<string> result = new ApiResult<string>();
+                result.Data = apiUrl;
+                await context.Response.Body.WriteAsync(JsonSerializer.Serialize(result).ToUtf8Bytes());
                 return;
             }
             await _next(context);
