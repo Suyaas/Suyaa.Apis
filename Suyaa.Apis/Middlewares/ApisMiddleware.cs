@@ -46,11 +46,12 @@ namespace Suyaa.Apis.Middlewares
             {
                 string apiUrl = url.Substring(5);
                 int apiSceneIndex = apiUrl.IndexOf('/');
-                context.Response.StatusCode = 200;
-                context.Response.ContentType = "text/plain";
+                //context.Response.StatusCode = 200;
+                //context.Response.ContentType = "text/plain";
                 ApiResult<string> result = new ApiResult<string>();
                 result.Data = apiUrl;
-                await context.Response.Body.WriteAsync(JsonSerializer.Serialize(result).ToUtf8Bytes());
+                //await context.Response.Body.WriteAsync(JsonSerializer.Serialize(result).ToUtf8Bytes());
+                await result.ExecuteResultAsync(context);
                 return;
             }
             await _next(context);

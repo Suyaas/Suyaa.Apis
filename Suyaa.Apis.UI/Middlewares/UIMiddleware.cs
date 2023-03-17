@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
+using Suyaa.Apis.UI.Extensions;
 using Suyaa.Microservice.Exceptions;
 using Suyaa.Microservice.Results;
 using System;
@@ -32,25 +33,6 @@ namespace Suyaa.Apis.UI.Middlewares
             Debug.WriteLine($"[UI] {_path}");
         }
 
-        // 呈现文档
-        private async Task Render(HttpResponse response, string path, string contentType)
-        {
-            response.StatusCode = 200;
-            response.ContentType = contentType;
-            byte[] buffer = new byte[1024];
-            using (var f = egg.IO.OpenFile(path))
-            {
-                response.ContentLength = f.Length;
-                int len = 0;
-                do
-                {
-                    len = f.Read(buffer, 0, buffer.Length);
-                    if (len > 0) await response.Body.WriteAsync(buffer, 0, len);
-                } while (len > 0);
-            }
-            await response.Body.FlushAsync();
-        }
-
         /// <summary>
         /// 执行
         /// </summary>
@@ -67,12 +49,10 @@ namespace Suyaa.Apis.UI.Middlewares
                 Debug.WriteLine($"[UI] Path: {path}");
                 if (!egg.IO.FileExists(path))
                 {
-                    context.Response.StatusCode = 404;
-                    context.Response.ContentType = "text/plain";
-                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404"));
+                    await context.Response.Render404Async();
                     return;
                 }
-                await Render(context.Response, path, "text/html");
+                await context.Response.RenderFileAsync(path, "text/html");
             }
             // 静态直接输出
             if (url.StartsWith("/ui/"))
@@ -80,7 +60,7 @@ namespace Suyaa.Apis.UI.Middlewares
                 string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(4));
                 if (!egg.IO.FileExists(path))
                 {
-                    context.Response.StatusCode = 404;
+                    await context.Response.Render404Async();
                     return;
                 }
                 string ext = System.IO.Path.GetExtension(path).ToLower();
@@ -92,7 +72,7 @@ namespace Suyaa.Apis.UI.Middlewares
                     case ".js": mime = "text/javascript"; break;
                     default: mime = "application/octet-stream"; break;
                 }
-                await Render(context.Response, path, mime);
+                await context.Response.RenderFileAsync(path, mime);
             }
             // 页面路由
             if (url.StartsWith("/page/"))
@@ -103,7 +83,7 @@ namespace Suyaa.Apis.UI.Middlewares
                     context.Response.Redirect("/page/404");
                     return;
                 }
-                await Render(context.Response, path, "text/html");
+                await context.Response.RenderFileAsync(path, "text/html");
             }
             // 脚本路由
             if (url.StartsWith("/js/"))
@@ -111,12 +91,10 @@ namespace Suyaa.Apis.UI.Middlewares
                 string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(4) + ".js");
                 if (!egg.IO.FileExists(path))
                 {
-                    context.Response.StatusCode = 404;
-                    context.Response.ContentType = "text/plain";
-                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404"));
+                    await context.Response.Render404Async();
                     return;
                 }
-                await Render(context.Response, path, "text/javascript");
+                await context.Response.RenderFileAsync(path, "text/javascript");
             }
             // 脚本路由
             if (url.StartsWith("/css/"))
@@ -124,12 +102,10 @@ namespace Suyaa.Apis.UI.Middlewares
                 string path = egg.IO.GetExecutionPath(_path + "/" + url.Substring(5) + ".css");
                 if (!egg.IO.FileExists(path))
                 {
-                    context.Response.StatusCode = 404;
-                    context.Response.ContentType = "text/plain";
-                    await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404"));
+                    await context.Response.Render404Async();
                     return;
                 }
-                await Render(context.Response, path, "text/css");
+                await context.Response.RenderFileAsync(path, "text/css");
             }
             await _next(context);
         }

@@ -34,7 +34,7 @@ namespace Suyaa.Apis.Windows
             this.Import<ModuleStartup>();
             this.Import<Common.Apps.ModuleStartup>();
             this.Import<Base.Apps.ModuleStartup>();
-            this.Import<Modules.Lark.ModuleStartup>();
+            this.Import<Lark.Apps.ModuleStartup>();
         }
 
         protected override void OnConfigureServices(IServiceCollection services)
@@ -52,6 +52,8 @@ namespace Suyaa.Apis.Windows
             app.UseDefaultPage("/page/index");
             // 使用令牌
             app.UseToken();
+            // 使用API
+            app.UseApis("/lark");
         }
     }
 }

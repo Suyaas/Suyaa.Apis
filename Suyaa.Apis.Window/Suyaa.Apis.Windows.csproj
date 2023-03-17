@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\modules\base\Suyaa.Apis.Base.Apps\Suyaa.Apis.Base.Apps.csproj" />
     <ProjectReference Include="..\modules\common\Suyaa.Apis.Common.Apps\Suyaa.Apis.Common.Apps.csproj" />
-    <ProjectReference Include="..\modules\lark\Suyaa.Apis.Modules.Lark\Suyaa.Apis.Modules.Lark.csproj" />
+    <ProjectReference Include="..\modules\lark\Suyaa.Apis.Lark.Apps\Suyaa.Apis.Lark.Apps.csproj" />
     <ProjectReference Include="..\Suyaa.Apis.Basic\Suyaa.Apis.Basic.csproj" />
   </ItemGroup>
 
