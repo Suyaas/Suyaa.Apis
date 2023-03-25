@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using Suyaa.Apis.Extensions;
 using Suyaa.Apis.UI.Extensions;
-using Suyaa.Apis.Basic.Extensions;
 using System.Security.AccessControl;
+using Suyaa.Microservice.Extensions;
 
 namespace Suyaa.Apis.Windows
 {
@@ -53,7 +53,7 @@ namespace Suyaa.Apis.Windows
             // 使用令牌
             app.UseToken();
             // 使用API
-            app.UseApis("/lark");
+            app.UseApis("lark");
         }
     }
 }

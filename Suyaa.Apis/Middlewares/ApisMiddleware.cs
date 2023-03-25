@@ -1,6 +1,9 @@
 ﻿using Egg;
+using Egg.Log;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.DependencyInjection;
+using Suyaa.Apis.Services.ApiManager;
 using Suyaa.Microservice.Exceptions;
 using Suyaa.Microservice.Results;
 using System;
@@ -26,11 +29,18 @@ namespace Suyaa.Apis.Middlewares
         /// 对象实例化
         /// </summary>
         /// <param name="next"></param>
-        public ApisMiddleware(RequestDelegate next, string path)
+        public ApisMiddleware(
+            RequestDelegate next,
+            IApiManager apiManager,
+            LoggerCollection logger,
+            string path
+            )
         {
             _next = next;
-            _path = path;
-            Debug.WriteLine($"[Apis] Path: {_path}");
+            _path = egg.IO.GetWorkPath(path);
+            egg.IO.CreateFolder(_path);
+            ((ApiManager)apiManager).SetPath(_path);
+            logger.Log(new LogEntity() { Event = "ApisMiddleware", Level = LogLevel.Info, Message = $"[Apis] Path: {_path}" });
         }
 
         /// <summary>

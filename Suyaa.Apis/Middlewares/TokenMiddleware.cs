@@ -10,7 +10,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Suyaa.Apis.Basic.Middlewares
+namespace Suyaa.Apis.Middlewares
 {
     /// <summary>
     /// 令牌中间件

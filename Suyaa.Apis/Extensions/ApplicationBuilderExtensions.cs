@@ -14,6 +14,21 @@ namespace Suyaa.Apis.Extensions
     public static class ApplicationBuilderExtensions
     {
         /// <summary>
+        /// 使用默认页
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseDefaultPage(this IApplicationBuilder app, string url) => app.UseMiddleware<DefaultPageMiddleware>(new object[] { url });
+
+        /// <summary>
+        /// 使用令牌交互
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseToken(this IApplicationBuilder app) => app.UseMiddleware<TokenMiddleware>();
+
+        /// <summary>
         /// 使用Api集合
         /// </summary>
         /// <param name="app"></param>
