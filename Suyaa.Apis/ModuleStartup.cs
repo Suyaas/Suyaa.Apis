@@ -16,12 +16,6 @@ namespace Suyaa.Apis
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            // 注册日志
-            var logger = new LoggerCollection();
-            logger.Use<ConsoleLogger>();
-            logger.Add(new FileLogger(egg.IO.GetWorkPath("logs")));
-            services.AddSingleton(logger);
-
             // 注册Api管理器
             var apiManager = new ApiManager();
             services.AddSingleton<IApiManager>(apiManager);

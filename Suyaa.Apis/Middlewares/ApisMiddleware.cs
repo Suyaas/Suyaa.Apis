@@ -32,7 +32,7 @@ namespace Suyaa.Apis.Middlewares
         public ApisMiddleware(
             RequestDelegate next,
             IApiManager apiManager,
-            LoggerCollection logger,
+            ILogger logger,
             string path
             )
         {
@@ -40,7 +40,7 @@ namespace Suyaa.Apis.Middlewares
             _path = egg.IO.GetWorkPath(path);
             egg.IO.CreateFolder(_path);
             ((ApiManager)apiManager).SetPath(_path);
-            logger.Log(new LogEntity() { Event = "ApisMiddleware", Level = LogLevel.Info, Message = $"[Apis] Path: {_path}" });
+            logger.Info($"[Apis] Path: {_path}");
         }
 
         /// <summary>
