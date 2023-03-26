@@ -11,7 +11,6 @@
     <ProjectReference Include="..\modules\common\Suyaa.Apis.Common.Apps\Suyaa.Apis.Common.Apps.csproj" />
     <ProjectReference Include="..\modules\lark\Suyaa.Apis.Lark.Apps\Suyaa.Apis.Lark.Apps.csproj" />
     <ProjectReference Include="..\modules\user\Suyaa.Apis.User.Apps\Suyaa.Apis.User.Apps.csproj" />
-    <ProjectReference Include="..\plugs\Suyaa.Apis.Plugs.Common\Suyaa.Apis.Plugs.Common.csproj" />
     <ProjectReference Include="..\Suyaa.Apis.UI\Suyaa.Apis.UI.csproj" />
     <ProjectReference Include="..\Suyaa.Apis\Suyaa.Apis.csproj" />
   </ItemGroup>
