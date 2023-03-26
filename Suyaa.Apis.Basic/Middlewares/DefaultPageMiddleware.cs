@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Egg.Log;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Suyaa.Microservice.Exceptions;
 using Suyaa.Microservice.Results;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Suyaa.Apis.Middlewares
+namespace Suyaa.Apis.Basic.Middlewares
 {
     /// <summary>
     /// 默认页面中间件
@@ -25,11 +27,12 @@ namespace Suyaa.Apis.Middlewares
         /// 对象实例化
         /// </summary>
         /// <param name="next"></param>
-        public DefaultPageMiddleware(RequestDelegate next, string url)
+        public DefaultPageMiddleware(RequestDelegate next, ILogger logger, string url)
         {
             _next = next;
             _url = url;
-            Debug.WriteLine($"[DefaultPage] {_url}");
+            //Debug.WriteLine($"[DefaultPage] {_url}");
+            logger.Debug($"DefaultPageMiddleware '{url}' Loading ...", "Middlewares");
         }
 
         /// <summary>

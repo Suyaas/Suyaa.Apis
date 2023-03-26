@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Egg.Log;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Suyaa.Microservice.Exceptions;
 using Suyaa.Microservice.Results;
@@ -10,7 +11,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Suyaa.Apis.Middlewares
+namespace Suyaa.Apis.Basic.Middlewares
 {
     /// <summary>
     /// 令牌中间件
@@ -24,9 +25,10 @@ namespace Suyaa.Apis.Middlewares
         /// 对象实例化
         /// </summary>
         /// <param name="next"></param>
-        public TokenMiddleware(RequestDelegate next)
+        public TokenMiddleware(RequestDelegate next, ILogger logger)
         {
             _next = next;
+            logger.Debug($"TokenMiddleware Loading ...", "Middlewares");
         }
 
         /// <summary>

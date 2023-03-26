@@ -3,10 +3,17 @@ using Egg;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Suyaa.Apis.Windows;
+using Suyaa.Apis.Basic;
+using System.Diagnostics;
+
+egg.Logger.GetCurrentLogger()
+    .Use((string message) =>
+    {
+        Debug.WriteLine(message);
+    });
 
 string key = "ASPNETCORE_ENVIRONMENT";
-if(Environment.GetEnvironmentVariable(key).IsNullOrWhiteSpace()) Environment.SetEnvironmentVariable(key, "Production");
+if (Environment.GetEnvironmentVariable(key).IsNullOrWhiteSpace()) Environment.SetEnvironmentVariable(key, "Production");
 var builder = new ConfigurationBuilder()
                .SetBasePath(Directory.GetCurrentDirectory())
                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)

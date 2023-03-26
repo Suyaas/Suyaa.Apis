@@ -10,11 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
-using Suyaa.Apis.Extensions;
 using Suyaa.Apis.UI.Extensions;
+using System.Security.AccessControl;
+using Suyaa.Microservice.Extensions;
 using Suyaa.Apis.Basic.Extensions;
 
-namespace Suyaa.Apis.Linux
+namespace Suyaa.Apis.Basic
 {
     /// <summary>
     /// 启动器
@@ -31,8 +32,9 @@ namespace Suyaa.Apis.Linux
         {
             base.OnInitialize();
             this.Import<ModuleStartup>();
+            this.Import<Common.Apps.ModuleStartup>();
             this.Import<Base.Apps.ModuleStartup>();
-            this.Import<Modules.Lark.ModuleStartup>();
+            this.Import<Lark.Apps.ModuleStartup>();
         }
 
         protected override void OnConfigureServices(IServiceCollection services)
@@ -50,6 +52,8 @@ namespace Suyaa.Apis.Linux
             app.UseDefaultPage("/page/index");
             // 使用令牌
             app.UseToken();
+            // 使用API
+            app.UseApis("lark");
         }
     }
 }

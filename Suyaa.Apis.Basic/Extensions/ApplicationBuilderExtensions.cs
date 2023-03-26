@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Suyaa.Apis.Middlewares;
+using Suyaa.Apis.Basic.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Suyaa.Apis.Extensions
+namespace Suyaa.Apis.Basic.Extensions
 {
     /// <summary>
     /// 应用程序构建帮助
