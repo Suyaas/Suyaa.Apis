@@ -4,6 +4,7 @@ using Suyaa.Apis.Services.ApiManager;
 using Suyaa.Microservice.Dependency;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,17 @@ namespace Suyaa.Apis.Lark.Apps.Editor
         }
 
         /// <summary>
+        /// 创建文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        [Get]
+        public async Task Create(string path)
+        {
+            await _editorCore.SaveFileContent(path, "@()", true);
+        }
+
+        /// <summary>
         /// 保存
         /// </summary>
         /// <param name="path"></param>
@@ -47,7 +59,7 @@ namespace Suyaa.Apis.Lark.Apps.Editor
         [Post]
         public async Task Save(EditorSaveInput input)
         {
-
+            await _editorCore.SaveFileContent(input.Path, input.Content);
         }
     }
 }
