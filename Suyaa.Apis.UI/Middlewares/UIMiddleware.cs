@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Egg.Log;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Suyaa.Apis.UI.Extensions;
 using Suyaa.Microservice.Exceptions;
@@ -26,11 +27,12 @@ namespace Suyaa.Apis.UI.Middlewares
         /// 对象实例化
         /// </summary>
         /// <param name="next"></param>
-        public UIMiddleware(RequestDelegate next, string path)
+        public UIMiddleware(RequestDelegate next, ILogger logger, string path)
         {
             _next = next;
             _path = path;
-            Debug.WriteLine($"[UI] {_path}");
+            //Debug.WriteLine($"[UI] {_path}");
+            logger.Debug($"UIMiddleware '{path}' Loading ...", "Middlewares");
         }
 
         /// <summary>
