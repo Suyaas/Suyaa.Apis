@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Suyaa.Apis.Services.ApiManager;
+using Suyaa.Apis.Services.LarkScriptFunctions;
 using Suyaa.Microservice.Exceptions;
 using Suyaa.Microservice.Results;
 using System;
@@ -24,6 +25,7 @@ namespace Suyaa.Apis.Basic.Middlewares
     {
         // 变量
         private RequestDelegate _next;
+        private readonly IServiceProvider _provider;
         private readonly string _path;
 
         /// <summary>
@@ -34,10 +36,12 @@ namespace Suyaa.Apis.Basic.Middlewares
             RequestDelegate next,
             IApiManager apiManager,
             ILogger logger,
+            IServiceProvider provider,
             string path
             )
         {
             _next = next;
+            _provider = provider;
             _path = egg.IO.GetWorkPath(path);
             egg.IO.CreateFolder(_path);
             ((ApiManager)apiManager).SetPath(_path);
@@ -60,30 +64,27 @@ namespace Suyaa.Apis.Basic.Middlewares
                 if (!egg.IO.FileExists(fullPath)) throw new FriendlyException($"脚本文件'{apiUrl}'未找到");
                 // 加载脚本
                 string script = egg.IO.ReadUtf8FileContent(fullPath);
-                using (var func = ScriptParser.Parse(script))
-                using (var funcs = new Egg.Lark.ScriptFunctions())
+                var larkEngineCore = _provider.GetRequiredService<ILarkEngineCore>();
+                using (var sf = ScriptParser.Parse(script))
+                using (Egg.Lark.ScriptEngine engine = new Egg.Lark.ScriptEngine(sf, larkEngineCore.ScriptFunctions))
                 {
-                    funcs.Reg<Suyaa.Apis.Plugs.Common.CommonFunction>();
-                    using (Egg.Lark.ScriptEngine engine = new Egg.Lark.ScriptEngine(func, funcs))
+                    //engine.SetMaxExecution(100000000);
+                    try
                     {
-                        //engine.SetMaxExecution(100000000);
-                        try
-                        {
-                            // 执行脚本
-                            var obj = engine.Execute();
-                            ApiResult<object> result = new ApiResult<object>();
-                            result.Data = obj;
-                            // 输出结果
-                            await result.ExecuteResultAsync(context);
-                        }
-                        catch (Exception ex)
-                        {
-                            ApiErrorResult result = new ApiErrorResult();
-                            egg.Logger.Error($"【{apiUrl}】执行发生异常:" + ex.ToString(), "API");
-                            result.Message = "执行发生异常：" + ex.Message;
-                            // 输出结果
-                            await result.ExecuteResultAsync(context);
-                        }
+                        // 执行脚本
+                        var obj = engine.Execute();
+                        ApiResult<object> result = new ApiResult<object>();
+                        result.Data = obj;
+                        // 输出结果
+                        await result.ExecuteResultAsync(context);
+                    }
+                    catch (Exception ex)
+                    {
+                        ApiErrorResult result = new ApiErrorResult();
+                        egg.Logger.Error($"【{apiUrl}】执行发生异常:" + ex.ToString(), "API");
+                        result.Message = "执行发生异常：" + ex.Message;
+                        // 输出结果
+                        await result.ExecuteResultAsync(context);
                     }
                 }
                 return;

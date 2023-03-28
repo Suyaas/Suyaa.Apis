@@ -12,8 +12,10 @@ import { suyaa } from "../share/suyaa.js";
 //     })
 
 // 初始化编辑器
-const codeggInit = function () {
+const codeggInit = async function () {
     var obj = {};
+    let datas = await suyaa.apiGet("/app/Lark/Engine/GetFunctions");
+    console.log(datas);
     // 实例化一个对象
     let codegg = obj.codegg = new LarkCodegg("editor", {
         // colors: {
@@ -24,19 +26,24 @@ const codeggInit = function () {
         //     toolbarSpliteColor: "#dddddd",
         // },
         // toolbar: [["h1", "h2", "h3", "p", "div"], ["b", "i", "s"], ["table", "ol", "ul"], ["link", "image", "audio", "video"], ["view"]]
+        codeKeys: datas,
     });
     // 绑定错误
-    codegg.bind("error", function (ex) {
+    codegg.Editor.bind("error", function (ex) {
         alert(ex);
     });
     // 获取内容
     obj.getContent = function () {
         //alert(codegg.getContent());
-        return codegg.getContent();
+        return codegg.Editor.getContent();
     }
     // 设置内容
     obj.setContent = function (content) {
-        codegg.setContent(content);
+        codegg.Editor.setContent(content);
+    }
+    // 绑定事件
+    obj.bind = function (evt, fn) {
+        codegg.Editor.bind(evt, fn);
     }
     return obj;
 }
@@ -49,12 +56,13 @@ var app = createApp({
             output: "",
         }
     },
-    created() {
+    async created() {
         let self = this;
         // 初始化编辑器
-        self.editor = codeggInit();
+        self.editor = await codeggInit();
+        console.log(self.editor);
         // 绑定保存事件
-        self.editor.codegg.bind("save", function () {
+        self.editor.bind("save", function () {
             if (self.working) return;
             self.working = true;
             self.status = "正在保存 ...";

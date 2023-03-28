@@ -16,5 +16,15 @@ namespace Suyaa.Apis.Plugs.Common
         {
             return "plug test ok";
         }
+
+        /// <summary>
+        /// 插件输出测试
+        /// </summary>
+        /// <returns></returns>
+        [Func]
+        public string PlugOutput()
+        {
+            return "plug output ok";
+        }
     }
 }

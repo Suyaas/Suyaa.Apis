@@ -12,8 +12,4 @@
     <ProjectReference Include="..\Suyaa.Apis.Lark.Entities\Suyaa.Apis.Lark.Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Engine\" />
-  </ItemGroup>
-
 </Project>
