@@ -22,6 +22,7 @@ namespace Suyaa.Apis.UI.Extensions
         /// <returns></returns>
         public static async Task RenderFileAsync(this HttpResponse response, string path, string contentType)
         {
+            response.Clear();
             response.StatusCode = 200;
             response.ContentType = contentType;
             byte[] buffer = new byte[4096];
@@ -44,6 +45,7 @@ namespace Suyaa.Apis.UI.Extensions
         /// <returns></returns>
         public static async Task Render404Async(this HttpResponse response)
         {
+            response.Clear();
             response.StatusCode = 404;
             response.ContentType = "text/plain";
             await response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404"));

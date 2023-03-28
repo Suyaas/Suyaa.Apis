@@ -55,6 +55,7 @@ namespace Suyaa.Apis.UI.Middlewares
                     return;
                 }
                 await context.Response.RenderFileAsync(path, "text/html");
+                return;
             }
             // 静态直接输出
             if (url.StartsWith("/ui/"))
@@ -75,6 +76,7 @@ namespace Suyaa.Apis.UI.Middlewares
                     default: mime = "application/octet-stream"; break;
                 }
                 await context.Response.RenderFileAsync(path, mime);
+                return;
             }
             // 页面路由
             if (url.StartsWith("/page/"))
@@ -86,6 +88,7 @@ namespace Suyaa.Apis.UI.Middlewares
                     return;
                 }
                 await context.Response.RenderFileAsync(path, "text/html");
+                return;
             }
             // 脚本路由
             if (url.StartsWith("/js/"))
@@ -97,6 +100,7 @@ namespace Suyaa.Apis.UI.Middlewares
                     return;
                 }
                 await context.Response.RenderFileAsync(path, "text/javascript");
+                return;
             }
             // 脚本路由
             if (url.StartsWith("/css/"))
@@ -108,6 +112,7 @@ namespace Suyaa.Apis.UI.Middlewares
                     return;
                 }
                 await context.Response.RenderFileAsync(path, "text/css");
+                return;
             }
             await _next(context);
         }
