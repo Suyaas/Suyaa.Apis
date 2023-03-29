@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Suyaa.Apis.Basic\Suyaa.Apis.Basic.csproj" />
+    <ProjectReference Include="..\..\Suyaa.Apis\Suyaa.Apis.csproj" />
+    <ProjectReference Include="..\base\Suyaa.Apis.Base.Apps\Suyaa.Apis.Base.Apps.csproj" />
+    <ProjectReference Include="..\common\Suyaa.Apis.Common.Apps\Suyaa.Apis.Common.Apps.csproj" />
+    <ProjectReference Include="..\lark\Suyaa.Apis.Lark.Apps\Suyaa.Apis.Lark.Apps.csproj" />
+    <ProjectReference Include="..\user\Suyaa.Apis.User.Apps\Suyaa.Apis.User.Apps.csproj" />
+  </ItemGroup>
+
+</Project>

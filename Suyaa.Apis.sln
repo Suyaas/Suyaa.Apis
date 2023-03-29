@@ -47,7 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suyaa.Apis.User.Apps", "mod
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugs", "plugs", "{E1B9AEB1-25D1-4267-BD5D-4B6C466EC1AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suyaa.Apis.Plugs.Common", "plugs\Suyaa.Apis.Plugs.Common\Suyaa.Apis.Plugs.Common.csproj", "{CA7C5FA6-F248-4DC0-9C39-27E1D1F480D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suyaa.Apis.Plugs.Common", "plugs\Suyaa.Apis.Plugs.Common\Suyaa.Apis.Plugs.Common.csproj", "{CA7C5FA6-F248-4DC0-9C39-27E1D1F480D6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suyaa.Apis.Full", "modules\Suyaa.Apis.Full\Suyaa.Apis.Full.csproj", "{681627C2-E41A-4D0D-AD6A-5C6329B0E4BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{CA7C5FA6-F248-4DC0-9C39-27E1D1F480D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA7C5FA6-F248-4DC0-9C39-27E1D1F480D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA7C5FA6-F248-4DC0-9C39-27E1D1F480D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681627C2-E41A-4D0D-AD6A-5C6329B0E4BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681627C2-E41A-4D0D-AD6A-5C6329B0E4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681627C2-E41A-4D0D-AD6A-5C6329B0E4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681627C2-E41A-4D0D-AD6A-5C6329B0E4BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -144,6 +150,7 @@ Global
 		{71CAC770-5CC3-4469-89ED-6BDFE0C72B3D} = {DDCC7720-89CE-4DDA-B166-3ABCE4F9A85A}
 		{D745F77B-876C-40E7-9AAD-0880477C365A} = {DDCC7720-89CE-4DDA-B166-3ABCE4F9A85A}
 		{CA7C5FA6-F248-4DC0-9C39-27E1D1F480D6} = {E1B9AEB1-25D1-4267-BD5D-4B6C466EC1AC}
+		{681627C2-E41A-4D0D-AD6A-5C6329B0E4BB} = {31F5E41D-6A70-4E03-A7BA-B392998F87F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8496237A-9379-46E4-99BC-EE2C7550F02F}

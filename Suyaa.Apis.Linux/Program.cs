@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Suyaa.Apis.Basic;
+using Suyaa.Apis.Full;
 
 namespace Suyaa.Apis.Linux
 {

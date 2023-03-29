@@ -15,7 +15,7 @@ using System.Security.AccessControl;
 using Suyaa.Microservice.Extensions;
 using Suyaa.Apis.Basic.Extensions;
 
-namespace Suyaa.Apis.Basic
+namespace Suyaa.Apis.Full
 {
     /// <summary>
     /// 启动器
@@ -35,6 +35,7 @@ namespace Suyaa.Apis.Basic
             this.Import<Common.Apps.ModuleStartup>();
             this.Import<Base.Apps.ModuleStartup>();
             this.Import<Lark.Apps.ModuleStartup>();
+            this.Import<User.Apps.ModuleStartup>();
         }
 
         protected override void OnConfigureServices(IServiceCollection services)
