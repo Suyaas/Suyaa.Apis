@@ -49,7 +49,7 @@ namespace Suyaa.Apis.Basic
             // 使用UI
             app.UseUI("ui");
             // 使用默认页
-            app.UseDefaultPage("/page/index");
+            app.UseDefaultPage("/ui/index.html");
             // 使用令牌
             app.UseToken();
             // 使用API

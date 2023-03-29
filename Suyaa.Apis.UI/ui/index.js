@@ -1,0 +1,1 @@
+location.href = "/ui/user/login.html";
