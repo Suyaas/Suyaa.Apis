@@ -47,16 +47,24 @@ namespace Suyaa.Apis.User.Cores.Jwt
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Consts.JWT_KEY);
+            JwtSecurityToken jwt;
             // 检验Token
-            tokenHandler.ValidateToken(token, new TokenValidationParameters
+            try
             {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(key),
-                ValidateIssuer = false,
-                ValidateAudience = false,
-            }, out SecurityToken validatedToken);
-            var jwt = (JwtSecurityToken)validatedToken;
-            if (jwt is null) throw new FriendlyException("jwt信息无效");
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                }, out SecurityToken validatedToken);
+                jwt = (JwtSecurityToken)validatedToken;
+            }
+            catch
+            {
+                throw new FriendlyException($"Jwt信息无效");
+            }
+            if (jwt is null) throw new FriendlyException("Jwt信息无效");
             JwtInfoOutput output = new JwtInfoOutput();
             //读取信息
             foreach (var claim in jwt.Claims)
