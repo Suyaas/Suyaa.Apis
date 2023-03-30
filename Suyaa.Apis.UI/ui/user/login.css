@@ -55,6 +55,11 @@
     box-shadow: 0px 0px 1px #a0a0a0;
 }
 
+.login-form .selected {
+    border: 1px solid #ff6600 !important;
+    box-shadow: 0px 0px 1px #ff6600 !important;
+}
+
 .login-form img {
     display: block;
     float: left;
