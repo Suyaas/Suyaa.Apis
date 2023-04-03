@@ -1,4 +1,4 @@
-﻿using Egg.EFCore;
+﻿using Suyaa.EFCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Egg.EFCore.Dbsets;
-using Egg.Data.Entities;
+using Suyaa.EFCore.Dbsets;
+using Suyaa.Data.Entities;
 
 namespace Suyaa.Apis.Entities
 {

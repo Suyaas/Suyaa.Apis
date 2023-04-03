@@ -1,5 +1,5 @@
-﻿using Egg.Log;
-using Egg.Log.Loggers;
+﻿using Suyaa.Logs;
+using Suyaa.Logs.Loggers;
 using Microsoft.Extensions.DependencyInjection;
 using Suyaa.Apis.Services.ApiManager;
 using Suyaa.Microservice;

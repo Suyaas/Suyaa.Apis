@@ -26,7 +26,7 @@ namespace Suyaa.Apis.UI.Extensions
             response.StatusCode = 200;
             response.ContentType = contentType;
             byte[] buffer = new byte[4096];
-            using (var f = egg.IO.OpenFile(path))
+            using (var f = sy.IO.OpenFile(path))
             {
                 response.ContentLength = f.Length;
                 int len = 0;

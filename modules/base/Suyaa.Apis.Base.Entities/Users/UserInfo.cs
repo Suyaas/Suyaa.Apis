@@ -1,4 +1,4 @@
-﻿using Egg.EFCore;
+﻿using Suyaa.EFCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Suyaa.Apis.Entities;
 using System;
@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Egg.Data.Entities;
+using Suyaa.Data.Entities;
 
 namespace Suyaa.Apis.Base.Entities.Users
 {

@@ -1,4 +1,4 @@
-﻿using Egg.Log;
+﻿using Suyaa.Logs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Suyaa.Microservice.Exceptions;

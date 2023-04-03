@@ -1,4 +1,4 @@
-﻿using Egg.Data.Entities;
+﻿using Suyaa.Data.Entities;
 using Suyaa.Apis.Entities;
 using System;
 using System.Collections.Generic;

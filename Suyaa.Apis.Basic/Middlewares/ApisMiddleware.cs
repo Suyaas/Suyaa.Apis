@@ -1,6 +1,6 @@
-﻿using Egg;
-using Egg.Lark;
-using Egg.Log;
+﻿using Suyaa;
+using Suyaa.Script;
+using Suyaa.Logs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,8 +42,8 @@ namespace Suyaa.Apis.Basic.Middlewares
         {
             _next = next;
             _provider = provider;
-            _path = egg.IO.GetWorkPath(path);
-            egg.IO.CreateFolder(_path);
+            _path = sy.IO.GetWorkPath(path);
+            sy.IO.CreateFolder(_path);
             ((ApiManager)apiManager).SetPath(_path);
             logger.Debug($"ApisMiddleware '{path}' Loading ...", "Middlewares");
         }
@@ -60,13 +60,13 @@ namespace Suyaa.Apis.Basic.Middlewares
             if (url.StartsWith("/api/"))
             {
                 string apiUrl = url.Substring(5);
-                string fullPath = egg.IO.CombinePath(_path, apiUrl + ".lark");
-                if (!egg.IO.FileExists(fullPath)) throw new FriendlyException($"脚本文件'{apiUrl}'未找到");
+                string fullPath = sy.IO.CombinePath(_path, apiUrl + ".lark");
+                if (!sy.IO.FileExists(fullPath)) throw new FriendlyException($"脚本文件'{apiUrl}'未找到");
                 // 加载脚本
-                string script = egg.IO.ReadUtf8FileContent(fullPath);
+                string script = sy.IO.ReadUtf8FileContent(fullPath);
                 var larkEngineCore = _provider.GetRequiredService<ILarkEngineCore>();
                 using (var sf = ScriptParser.Parse(script))
-                using (Egg.Lark.ScriptEngine engine = new Egg.Lark.ScriptEngine(sf, larkEngineCore.ScriptFunctions))
+                using (Suyaa.Script.ScriptEngine engine = new Suyaa.Script.ScriptEngine(sf, larkEngineCore.ScriptFunctions))
                 {
                     //engine.SetMaxExecution(100000000);
                     try
@@ -81,7 +81,7 @@ namespace Suyaa.Apis.Basic.Middlewares
                     catch (Exception ex)
                     {
                         ApiErrorResult result = new ApiErrorResult();
-                        egg.Logger.Error($"【{apiUrl}】执行发生异常:" + ex.ToString(), "API");
+                        sy.Logger.Error($"【{apiUrl}】执行发生异常:" + ex.ToString(), "API");
                         result.Message = "执行发生异常：" + ex.Message;
                         // 输出结果
                         await result.ExecuteResultAsync(context);

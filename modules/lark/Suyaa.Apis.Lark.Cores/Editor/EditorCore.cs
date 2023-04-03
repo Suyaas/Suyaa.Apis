@@ -35,10 +35,10 @@ namespace Suyaa.Apis.Lark.Cores.Editor
         /// <exception cref="FriendlyException"></exception>
         public async Task SaveFileContent(string path, string content, bool create = false)
         {
-            string fullPath = egg.IO.CombinePath(_apiManager.Path, path + ".lark");
-            if (create && egg.IO.FileExists(fullPath))
+            string fullPath = sy.IO.CombinePath(_apiManager.Path, path + ".lark");
+            if (create && sy.IO.FileExists(fullPath))
                 throw new FriendlyException($"文件'{path}'已存在");
-            egg.IO.WriteUtf8FileContent(fullPath, content);
+            sy.IO.WriteUtf8FileContent(fullPath, content);
             await Task.CompletedTask;
         }
 
@@ -49,9 +49,9 @@ namespace Suyaa.Apis.Lark.Cores.Editor
         /// <returns></returns>
         public async Task<string> GetFileContent(string path)
         {
-            string fullPath = egg.IO.CombinePath(_apiManager.Path, path + ".lark");
-            if (!egg.IO.FileExists(fullPath)) throw new FriendlyException($"文件'{path}'不存在");
-            return await Task.FromResult(egg.IO.ReadUtf8FileContent(fullPath));
+            string fullPath = sy.IO.CombinePath(_apiManager.Path, path + ".lark");
+            if (!sy.IO.FileExists(fullPath)) throw new FriendlyException($"文件'{path}'不存在");
+            return await Task.FromResult(sy.IO.ReadUtf8FileContent(fullPath));
         }
     }
 }

@@ -1,13 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using Egg;
+using Suyaa;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Suyaa.Apis.Basic;
 using Suyaa.Apis.Full;
 using System.Diagnostics;
+using Suyaa.Helpers;
 
-egg.Logger.GetCurrentLogger()
+sy.Logger.GetCurrentLogger()
     .Use((string message) =>
     {
         Debug.WriteLine(message);

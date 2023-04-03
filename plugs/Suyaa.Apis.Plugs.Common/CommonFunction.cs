@@ -1,4 +1,4 @@
-﻿using Egg.Lark;
+﻿using Suyaa.Script;
 
 namespace Suyaa.Apis.Plugs.Common
 {

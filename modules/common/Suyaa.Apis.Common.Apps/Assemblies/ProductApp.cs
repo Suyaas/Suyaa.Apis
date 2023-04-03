@@ -24,8 +24,8 @@ namespace Suyaa.Apis.Common.Apps.Assemblies
         {
             return new AssemblyOutput()
             {
-                Name = egg.Assembly.Name,
-                Version = egg.Assembly.Version,
+                Name = sy.Assembly.Name,
+                Version = sy.Assembly.Version,
             };
         }
     }

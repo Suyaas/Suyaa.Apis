@@ -9,10 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Egg.Data.PostgreSQL" Version="16.2.2303.17" />
-    <PackageReference Include="Egg.Lark" Version="16.2.2303.17" />
-    <PackageReference Include="Suyaa.Microservice" Version="1.3.2303.15" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
+    <PackageReference Include="Suyaa.Data.PostgreSQL" Version="1.0.2304.1" />
+    <PackageReference Include="Suyaa.Microservice" Version="1.4.2304.16" />
+    <PackageReference Include="Suyaa.Script" Version="1.0.2304.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.28.0" />
   </ItemGroup>
 
   <ItemGroup>
