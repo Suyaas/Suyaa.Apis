@@ -29,21 +29,21 @@ const codeggInit = async function () {
         codeKeys: datas,
     });
     // 绑定错误
-    codSuyaa.Editor.bind("error", function (ex) {
+    codegg.Editor.bind("error", function (ex) {
         alert(ex);
     });
     // 获取内容
     obj.getContent = function () {
-        //alert(codSuyaa.getContent());
-        return codSuyaa.Editor.getContent();
+        //alert(codegg.getContent());
+        return codegg.Editor.getContent();
     }
     // 设置内容
     obj.setContent = function (content) {
-        codSuyaa.Editor.setContent(content);
+        codegg.Editor.setContent(content);
     }
     // 绑定事件
     obj.bind = function (evt, fn) {
-        codSuyaa.Editor.bind(evt, fn);
+        codegg.Editor.bind(evt, fn);
     }
     return obj;
 }

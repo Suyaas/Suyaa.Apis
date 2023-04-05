@@ -112,29 +112,29 @@ class LarkCodegg {
             logo: logoImg,
         });
         // 添加工具事件
-        codSuyaa.bind("step", function () {
-            codSuyaa.insertContent("@(fn)");
+        codegg.bind("step", function () {
+            codegg.insertContent("@(fn)");
         });
-        codSuyaa.bind("calculate", function () {
-            codSuyaa.insertContent("!()");
+        codegg.bind("calculate", function () {
+            codegg.insertContent("!()");
         });
-        codSuyaa.bind("addition", function () {
-            codSuyaa.insertContent("+(val, val)");
+        codegg.bind("addition", function () {
+            codegg.insertContent("+(val, val)");
         });
-        codSuyaa.bind("subtraction", function () {
-            codSuyaa.insertContent("-(val, val)");
+        codegg.bind("subtraction", function () {
+            codegg.insertContent("-(val, val)");
         });
-        codSuyaa.bind("multiplication", function () {
-            codSuyaa.insertContent("*(val, val)");
+        codegg.bind("multiplication", function () {
+            codegg.insertContent("*(val, val)");
         });
-        codSuyaa.bind("division", function () {
-            codSuyaa.insertContent("/(val, val)");
+        codegg.bind("division", function () {
+            codegg.insertContent("/(val, val)");
         });
         // 添加呈现事件
         var showInspiration = function (line, lineString, key) {
             const that = codegg;
             //let x = context.measureText(lineString).width;
-            let x = codSuyaa.getTextWidth(lineString);
+            let x = codegg.getTextWidth(lineString);
             if (key === "") {
                 that.hideInspiration();
             } else {
@@ -152,7 +152,7 @@ class LarkCodegg {
                 }
             }
         };
-        codSuyaa.bind("Render", function (contentChanged) {
+        codegg.bind("Render", function (contentChanged) {
             const that = codegg;
             if (typeof (contentChanged) === "undefined") contentChanged = false;
             let txt = that.editor.value;
@@ -363,7 +363,7 @@ class LarkCodegg {
             }
         });
         // 初始化呈现
-        codSuyaa.render(false);
+        codegg.render(false);
         // return codegg;
     }
 }

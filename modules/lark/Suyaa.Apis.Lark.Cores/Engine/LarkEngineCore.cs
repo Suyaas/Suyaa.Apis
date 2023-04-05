@@ -21,7 +21,7 @@ namespace Suyaa.Apis.Services.LarkScriptFunctions
         public LarkEngineCore()
         {
             _scriptFunctions = new ScriptFunctions();
-            _scriptFunctions.Reg<Plugs.Common.CommonFunction>();
+            _scriptFunctions.Reg<Plugs.Common.CommonRegistr>();
         }
 
         /// <summary>

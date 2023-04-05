@@ -1,11 +1,13 @@
-﻿using Suyaa.Script;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Suyaa.Apis.Services.ApiManager;
+using Suyaa.Script;
 
 namespace Suyaa.Apis.Plugs.Common
 {
     /// <summary>
     /// 公共函数集合
     /// </summary>
-    public class CommonFunction: ScriptFunctionRegistrBase
+    public class CommonRegistr : ScriptRegistrBase
     {
         /// <summary>
         /// 插件测试
@@ -18,13 +20,15 @@ namespace Suyaa.Apis.Plugs.Common
         }
 
         /// <summary>
-        /// 插件输出测试
+        /// 插件容器测试
         /// </summary>
         /// <returns></returns>
         [Func]
-        public string PlugOutput()
+        public string ApiPath()
         {
-            return "plug output ok";
+            var provider = this.Engine.TakeRequired<IServiceProvider>();
+            IApiManager apiManager = provider.GetRequiredService<IApiManager>();
+            return apiManager.Path;
         }
     }
 }

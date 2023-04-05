@@ -69,6 +69,7 @@ namespace Suyaa.Apis.Basic.Middlewares
                 using (Suyaa.Script.ScriptEngine engine = new Suyaa.Script.ScriptEngine(sf, larkEngineCore.ScriptFunctions))
                 {
                     //engine.SetMaxExecution(100000000);
+                    engine.Put<IServiceProvider>(_provider);
                     try
                     {
                         // 执行脚本
