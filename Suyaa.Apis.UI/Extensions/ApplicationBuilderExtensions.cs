@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Suyaa.Apis.UI.Middlewares;
+using Suyaa.Apis.UI.Middlewares.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,12 @@ namespace Suyaa.Apis.UI.Extensions
         /// <returns></returns>
         public static IApplicationBuilder UseUI(this IApplicationBuilder app, string path)
         {
-            app.UseMiddleware<UIMiddleware>(new object[] { path });
+            return app.UseMiddleware<UIMiddleware>(new object[] {
+                new UIMiddlewareDto() {
+                    Path = path,
+                    IsVueRouter = true,
+                }
+            });
         }
     }
 }

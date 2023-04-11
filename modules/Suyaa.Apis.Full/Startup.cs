@@ -14,6 +14,7 @@ using Suyaa.Apis.UI.Extensions;
 using System.Security.AccessControl;
 using Suyaa.Microservice.Extensions;
 using Suyaa.Apis.Basic.Extensions;
+using Suyaa.Apis.Basic.ActionFilters;
 
 namespace Suyaa.Apis.Full
 {
@@ -22,6 +23,8 @@ namespace Suyaa.Apis.Full
     /// </summary>
     public class Startup : Suyaa.Microservice.Startup
     {
+        private const string Cors_Policy = "AllCors";
+
         /// <summary>
         /// 启动器
         /// </summary>
@@ -36,15 +39,40 @@ namespace Suyaa.Apis.Full
             this.Import<Base.Apps.ModuleStartup>();
             this.Import<Lark.Apps.ModuleStartup>();
             this.Import<User.Apps.ModuleStartup>();
+
+            // 添加跨域过滤器
+            this.AddFilter<CrosActionFilter>();
         }
 
         protected override void OnConfigureServices(IServiceCollection services)
         {
             base.OnConfigureServices(services);
+
+            //// 配置跨域
+            //services.AddCors(d =>
+            //{
+            //    d.AddPolicy(Cors_Policy, policy =>
+            //    {
+            //        policy
+            //        //.SetIsOriginAllowed((host) =>
+            //        //{
+            //        //    return true;
+            //        //})
+            //        //.AllowAnyMethod()
+            //        .WithOrigins("http://localhost:5173/")
+            //        .WithMethods("Get", "POST", "OPTIONS");
+            //        //.AllowAnyHeader()
+            //        //.AllowCredentials();
+            //    });
+            //});
         }
 
         protected override void OnConfigure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // 全局跨域
+            //app.UseCors(Cors_Policy);
+            //app.UseAllCors();
+
             base.OnConfigure(app, env);
 
             // 使用UI

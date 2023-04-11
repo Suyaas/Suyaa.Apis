@@ -32,8 +32,9 @@ namespace Suyaa.Apis.UI.Middlewares
         public UIMiddleware(RequestDelegate next, ILogger logger, UIMiddlewareDto dto)
         {
             _next = next;
+            _dto = dto;
             //Debug.WriteLine($"[UI] {_path}");
-            logger.Debug($"UIMiddleware '{this.Path}' Loading ...", "Middlewares");
+            logger.Debug($"UIMiddleware '{dto.Path}' Loading ...", "Middlewares");
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace Suyaa.Apis.UI.Middlewares
             // 404页面
             if (url == "/page/404")
             {
-                string path = sy.IO.GetExecutionPath(this.Path + "/404.html");
+                string path = sy.IO.GetExecutionPath(_dto.Path + "/404.html");
                 Debug.WriteLine($"[UI] Path: {path}");
                 if (!sy.IO.FileExists(path))
                 {
@@ -63,8 +64,8 @@ namespace Suyaa.Apis.UI.Middlewares
             {
                 string file = url.Substring(4);
                 // 兼容Vue
-                if (file.IsNullOrWhiteSpace()) file = "index";
-                string path = sy.IO.GetExecutionPath(this.Path + "/" + file);
+                if (file.IsNullOrWhiteSpace()) file = "index.html";
+                string path = sy.IO.GetExecutionPath(_dto.Path + "/" + file);
                 if (!sy.IO.FileExists(path))
                 {
                     await context.Response.Render404Async();
@@ -85,7 +86,7 @@ namespace Suyaa.Apis.UI.Middlewares
             // 页面路由
             if (url.StartsWith("/page/"))
             {
-                string path = sy.IO.GetExecutionPath(this.Path + "/" + url.Substring(6) + ".html");
+                string path = sy.IO.GetExecutionPath(_dto.Path + "/" + url.Substring(6) + ".html");
                 if (!sy.IO.FileExists(path))
                 {
                     context.Response.Redirect("/page/404");
@@ -97,7 +98,7 @@ namespace Suyaa.Apis.UI.Middlewares
             // 脚本路由
             if (url.StartsWith("/js/"))
             {
-                string path = sy.IO.GetExecutionPath(this.Path + "/" + url.Substring(4) + ".js");
+                string path = sy.IO.GetExecutionPath(_dto.Path + "/" + url.Substring(4) + ".js");
                 if (!sy.IO.FileExists(path))
                 {
                     await context.Response.Render404Async();
@@ -109,7 +110,7 @@ namespace Suyaa.Apis.UI.Middlewares
             // 脚本路由
             if (url.StartsWith("/css/"))
             {
-                string path = sy.IO.GetExecutionPath(this.Path + "/" + url.Substring(5) + ".css");
+                string path = sy.IO.GetExecutionPath(_dto.Path + "/" + url.Substring(5) + ".css");
                 if (!sy.IO.FileExists(path))
                 {
                     await context.Response.Render404Async();

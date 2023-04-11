@@ -35,5 +35,12 @@ namespace Suyaa.Apis.Basic.Extensions
         /// <param name="path"></param>
         /// <returns></returns>
         public static IApplicationBuilder UseApis(this IApplicationBuilder app, string path) => app.UseMiddleware<ApisMiddleware>(new object[] { path });
+
+        /// <summary>
+        /// 使用全局跨域
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseAllCors(this IApplicationBuilder app) => app.UseMiddleware<AllCorsMiddleware>();
     }
 }
