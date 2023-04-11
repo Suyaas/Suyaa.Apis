@@ -19,6 +19,9 @@ namespace Suyaa.Apis.UI.Extensions
         /// <param name="app"></param>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseUI(this IApplicationBuilder app, string path) => app.UseMiddleware<UIMiddleware>(new object[] { path });
+        public static IApplicationBuilder UseUI(this IApplicationBuilder app, string path)
+        {
+            app.UseMiddleware<UIMiddleware>(new object[] { path });
+        }
     }
 }

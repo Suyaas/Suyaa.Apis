@@ -1,7 +1,19 @@
 {
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:6600",
+      "sslPort": 0
+    }
+  },
   "profiles": {
     "Suyaa.Apis.Windows": {
       "commandName": "Project",
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:6600",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:6600",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

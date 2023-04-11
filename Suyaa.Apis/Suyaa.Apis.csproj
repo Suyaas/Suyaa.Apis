@@ -9,9 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Suyaa.Data.PostgreSQL" Version="1.0.2304.1" />
-    <PackageReference Include="Suyaa.Microservice" Version="1.4.2304.16" />
-    <PackageReference Include="Suyaa.Script" Version="1.0.2304.2" />
+    <PackageReference Include="Suyaa.Data.PostgreSQL" Version="1.0.2304.2" />
+    <PackageReference Include="Suyaa.Microservice" Version="1.4.2304.17" />
+    <PackageReference Include="Suyaa.Script" Version="1.0.2304.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.28.1" />
   </ItemGroup>
 

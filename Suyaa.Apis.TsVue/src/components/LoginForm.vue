@@ -1,23 +1,21 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import loginUserImage from '/login/user.png'
 import loginPwdImage from '/login/password.png'
+import { def } from '@vue/shared';
 
-const data = {
-    isUserFocus: false,
-    isPwdFocus: false,
-}
-// const isUserFocus = ref(false);
-// const isPwdFocus = ref(false);
+let isUserFocus = ref(false);
+let isPwdFocus = ref(false);
 
-const setUserFocus = function (isFocus) {
-    data.isUserFocus = isFocus;
+// 设置用户焦点
+const setUserFocus = function (isFocus: boolean) {
+    isUserFocus.value = isFocus;
 }
 
 // 设置密码焦点
-const setPwdFocus = function (isFocus) {
-    data.isPwdFocus = isFocus
-}
+const setPwdFocus = function (isFocus: boolean) {
+    isPwdFocus.value = isFocus;
+};
 </script>
 
 <template>
@@ -25,10 +23,10 @@ const setPwdFocus = function (isFocus) {
         <div class="login-rect">
             <div class="login-bg"></div>
             <div class="login-form">
-                <p :class="{ selected: data.isUserFocus }"><img :src="loginUserImage" /><input placeholder="输入用户名"
-                        type="text" maxlength="50" @focus="setUserFocus(true)" @blur="setUserFocus(false)" /><br /></p>
-                <p :class="{ selected: data.isPwdFocus }"><img :src="loginPwdImage" /><input placeholder="输入密码"
-                        type="password" maxlength="50" @focus="setPwdFocus(true)" @blur="setPwdFocus(false)" /><br /></p>
+                <p :class="{ selected: isUserFocus }"><img :src="loginUserImage" /><input placeholder="输入用户名" type="text"
+                        maxlength="50" @focus="setUserFocus(true)" @blur="setUserFocus(false)" /><br /></p>
+                <p :class="{ selected: isPwdFocus }"><img :src="loginPwdImage" /><input placeholder="输入密码" type="password"
+                        maxlength="50" @focus="setPwdFocus(true)" @blur="setPwdFocus(false)" /><br /></p>
                 <div>
                     <div class="forgot"><a href="javascript:;">忘记密码</a></div>
                     <div class="submit"><a href="javascript:;">确认登录</a></div>

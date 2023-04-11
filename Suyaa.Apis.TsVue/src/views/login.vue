@@ -1,12 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
-import LoginForm from './LoginForm.vue'
+import LoginForm from '@/components/LoginForm.vue'
 import bgImg from '/login/bg.jpg'
 </script>
 
 <template>
     <div class="bg"><img :src="bgImg"></div>
-    <LoginForm msg="Vite + Vue" />
+    <LoginForm />
 </template>
 
 <style scoped>
