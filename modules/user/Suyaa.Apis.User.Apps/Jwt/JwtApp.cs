@@ -49,11 +49,18 @@ namespace Suyaa.Apis.User.Apps.Jwt
         [Get]
         public async Task<string> Renewal(string token)
         {
-            var output = await _jwtCore.ReadToken(token);
-            return await _jwtCore.GenerateToken(new JwtInfoInput()
+            try
             {
-                UserId = output.UserId,
-            });
+                var output = await _jwtCore.ReadToken(token);
+                return await _jwtCore.GenerateToken(new JwtInfoInput()
+                {
+                    UserId = output.UserId,
+                });
+            }
+            catch
+            {
+                return await _jwtCore.GenerateToken(new JwtInfoInput());
+            }
         }
     }
 }
