@@ -23,7 +23,7 @@ namespace Suyaa.Apis.Entities
         /// </summary>
         [Column("creator_user_no")]
         [Description("创建用户Id")]
-        public virtual int CreatorUserNo { get; set; } = 0;
+        public virtual long CreatorUserNo { get; set; } = 0;
 
         /// <summary>
         /// 创建时间

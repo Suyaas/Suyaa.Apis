@@ -18,7 +18,7 @@ namespace Suyaa.Apis.Entities
         /// <summary>
         /// 最后修改用户编号
         /// </summary>
-        int LastModifierUserNo { get; set; }
+        long LastModifierUserNo { get; set; }
 
         /// <summary>
         /// 最后修改时间

@@ -9,8 +9,10 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using Suyaa.Apis.Helpers;
+using Suyaa.Apis.Attributes;
 
-namespace Suyaa.Apis.User.Entities.Users
+namespace Suyaa.Apis.Entities
 {
     /// <summary>
     /// 用户信息
@@ -19,10 +21,18 @@ namespace Suyaa.Apis.User.Entities.Users
     public class UserInfo : NeatEntity
     {
         /// <summary>
+        /// 用户编号
+        /// </summary>
+        [Description("用户名")]
+        [DBColumn(nameof(UserNo), TypeName = "bigint")]
+        [Index(Unique = true)]
+        public virtual long UserNo { get; set; } = 0;
+
+        /// <summary>
         /// 用户名
         /// </summary>
         [Description("用户名")]
-        [Column("account", TypeName = "varchar(128)")]
+        [DBColumn(nameof(Account), TypeName = "varchar(128)")]
         [StringLength(128)]
         public virtual string Account { get; set; } = string.Empty;
 

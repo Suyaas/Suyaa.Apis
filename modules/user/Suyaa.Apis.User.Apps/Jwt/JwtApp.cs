@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using Suyaa.Apis.User.Apps.Jwt.Dto;
 using Suyaa.Apis.User.Cores.Jwt;
 using Suyaa.Apis.User.Cores.Jwt.Stos;
 using Suyaa.Microservice.Dependency;
@@ -36,9 +37,14 @@ namespace Suyaa.Apis.User.Apps.Jwt
         /// <param name="userId"></param>
         /// <returns></returns>
         [Get]
-        public async Task<string> Create()
+        public async Task<JwtOutput> Create()
         {
-            return await _jwtCore.GenerateToken(new JwtInfoInput());
+            string token = await _jwtCore.GenerateToken(new JwtInfoInput());
+            return new JwtOutput
+            {
+                Token = token,
+                RenewalTime = DateTimeOffset.Now.AddHours(1).ToUnixTimeSeconds()
+            };
         }
 
         /// <summary>
@@ -47,20 +53,26 @@ namespace Suyaa.Apis.User.Apps.Jwt
         /// <param name="token"></param>
         /// <returns></returns>
         [Get]
-        public async Task<string> Renewal(string token)
+        public async Task<JwtOutput> Renewal(string token)
         {
+            string tokenNew;
             try
             {
                 var output = await _jwtCore.ReadToken(token);
-                return await _jwtCore.GenerateToken(new JwtInfoInput()
+                tokenNew = await _jwtCore.GenerateToken(new JwtInfoInput()
                 {
                     UserId = output.UserId,
                 });
             }
             catch
             {
-                return await _jwtCore.GenerateToken(new JwtInfoInput());
+                tokenNew = await _jwtCore.GenerateToken(new JwtInfoInput());
             }
+            return new JwtOutput
+            {
+                Token = tokenNew,
+                RenewalTime = DateTimeOffset.Now.AddHours(1).ToUnixTimeSeconds()
+            };
         }
     }
 }
