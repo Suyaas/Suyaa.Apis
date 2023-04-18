@@ -10,11 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
-using Suyaa.Apis.UI.Extensions;
 using System.Security.AccessControl;
 using Suyaa.Microservice.Extensions;
-using Suyaa.Apis.Basic.Extensions;
 using Suyaa.Apis.Basic.ActionFilters;
+using Suyaa.Apis.UI.Helpers;
+using Suyaa.Apis.Basic.Helpers;
 
 namespace Suyaa.Apis.Full
 {
@@ -48,23 +48,11 @@ namespace Suyaa.Apis.Full
         {
             base.OnConfigureServices(services);
 
-            //// 配置跨域
-            //services.AddCors(d =>
-            //{
-            //    d.AddPolicy(Cors_Policy, policy =>
-            //    {
-            //        policy
-            //        //.SetIsOriginAllowed((host) =>
-            //        //{
-            //        //    return true;
-            //        //})
-            //        //.AllowAnyMethod()
-            //        .WithOrigins("http://localhost:5173/")
-            //        .WithMethods("Get", "POST", "OPTIONS");
-            //        //.AllowAnyHeader()
-            //        //.AllowCredentials();
-            //    });
-            //});
+            // 添加UI配置
+            services.AddUI(opt =>
+            {
+                opt.AddPath("ui");
+            });
         }
 
         protected override void OnConfigure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -76,7 +64,7 @@ namespace Suyaa.Apis.Full
             base.OnConfigure(app, env);
 
             // 使用UI
-            app.UseUI("ui");
+            app.UseUI();
             // 使用默认页
             app.UseDefaultPage("/ui/index.html");
             // 使用令牌

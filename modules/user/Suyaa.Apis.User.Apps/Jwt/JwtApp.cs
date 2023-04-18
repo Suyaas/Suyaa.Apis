@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using Suyaa.Apis.Attributes;
 using Suyaa.Apis.User.Apps.Jwt.Dto;
 using Suyaa.Apis.User.Cores.Jwt;
 using Suyaa.Apis.User.Cores.Jwt.Stos;
@@ -73,6 +74,17 @@ namespace Suyaa.Apis.User.Apps.Jwt
                 Token = tokenNew,
                 RenewalTime = DateTimeOffset.Now.AddHours(1).ToUnixTimeSeconds()
             };
+        }
+
+        /// <summary>
+        /// 验证Token登录
+        /// </summary>
+        /// <returns></returns>
+        [Get]
+        [JwtAuthorize]
+        public async Task Verify()
+        {
+            await Task.CompletedTask;
         }
     }
 }
