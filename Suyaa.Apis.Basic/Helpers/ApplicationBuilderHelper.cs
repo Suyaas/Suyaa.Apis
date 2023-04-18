@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Suyaa.Apis.Basic.Extensions
+namespace Suyaa.Apis.Basic.Helpers
 {
     /// <summary>
     /// 应用程序构建帮助
     /// </summary>
-    public static class ApplicationBuilderExtensions
+    public static class ApplicationBuilderHelper
     {
         /// <summary>
         /// 使用默认页

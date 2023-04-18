@@ -24,7 +24,7 @@ namespace Suyaa.Apis.Entities
         /// 用户编号
         /// </summary>
         [Description("用户名")]
-        [DBColumn(nameof(UserNo), TypeName = "bigint")]
+        [Column(nameof(UserNo), TypeName = "bigint")]
         [Index(Unique = true)]
         public virtual long UserNo { get; set; } = 0;
 
@@ -32,7 +32,7 @@ namespace Suyaa.Apis.Entities
         /// 用户名
         /// </summary>
         [Description("用户名")]
-        [DBColumn(nameof(Account), TypeName = "varchar(128)")]
+        [Column(nameof(Account), TypeName = "varchar(128)")]
         [StringLength(128)]
         public virtual string Account { get; set; } = string.Empty;
 

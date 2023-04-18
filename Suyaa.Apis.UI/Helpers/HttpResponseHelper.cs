@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Suyaa.Apis.UI.Extensions
+namespace Suyaa.Apis.UI.Helpers
 {
     /// <summary>
     /// 应用程序构建帮助
     /// </summary>
-    public static class HttpResponseExtensions
+    public static class HttpResponseHelper
     {
         /// <summary>
         /// 呈现文件
@@ -40,7 +40,7 @@ namespace Suyaa.Apis.UI.Extensions
         }
 
         /// <summary>
-        /// 呈现404
+        /// 返回404错误
         /// </summary>
         /// <returns></returns>
         public static async Task Render404Async(this HttpResponse response)
@@ -48,7 +48,7 @@ namespace Suyaa.Apis.UI.Extensions
             response.Clear();
             response.StatusCode = 404;
             response.ContentType = "text/plain";
-            await response.Body.WriteAsync(Encoding.UTF8.GetBytes("Not found 404"));
+            await response.Body.FlushAsync();
         }
     }
 }

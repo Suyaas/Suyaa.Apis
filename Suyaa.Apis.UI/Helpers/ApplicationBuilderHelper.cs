@@ -1,18 +1,17 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Suyaa.Apis.UI.Middlewares;
-using Suyaa.Apis.UI.Middlewares.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Suyaa.Apis.UI.Extensions
+namespace Suyaa.Apis.UI.Helpers
 {
     /// <summary>
     /// 应用程序构建帮助
     /// </summary>
-    public static class ApplicationBuilderExtensions
+    public static class ApplicationBuilderHelper
     {
         /// <summary>
         /// 使用默认页
@@ -20,14 +19,9 @@ namespace Suyaa.Apis.UI.Extensions
         /// <param name="app"></param>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseUI(this IApplicationBuilder app, string path)
+        public static IApplicationBuilder UseUI(this IApplicationBuilder app)
         {
-            return app.UseMiddleware<UIMiddleware>(new object[] {
-                new UIMiddlewareDto() {
-                    Path = path,
-                    IsVueRouter = true,
-                }
-            });
+            return app.UseMiddleware<UIMiddleware>();
         }
     }
 }
