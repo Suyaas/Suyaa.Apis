@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Suyaa.Microservice.Exceptions;
+using Suyaa.Apis.Helpers;
 
 namespace Suyaa.Apis.User.Cores.Jwt
 {
@@ -29,7 +30,10 @@ namespace Suyaa.Apis.User.Cores.Jwt
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim(nameof(input.UserId), input.UserId) }),
+                Subject = new ClaimsIdentity(new[] {
+                    new Claim(nameof(input.UserId), input.UserId.ToString()),
+                    new Claim(nameof(input.UserLoginId), input.UserLoginId),
+                }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials =
                     new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -45,37 +49,12 @@ namespace Suyaa.Apis.User.Cores.Jwt
         /// <returns></returns>
         public async Task<JwtInfoOutput> ReadToken(string token)
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(Consts.JWT_KEY);
-            JwtSecurityToken jwt;
-            // 检验Token
-            try
+            var info = token.GetJwtInfo();
+            JwtInfoOutput output = new JwtInfoOutput()
             {
-                tokenHandler.ValidateToken(token, new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                }, out SecurityToken validatedToken);
-                jwt = (JwtSecurityToken)validatedToken;
-            }
-            catch
-            {
-                throw new FriendlyException($"Jwt信息无效");
-            }
-            if (jwt is null) throw new FriendlyException("Jwt信息无效");
-            JwtInfoOutput output = new JwtInfoOutput();
-            //读取信息
-            foreach (var claim in jwt.Claims)
-            {
-                switch (claim.Type)
-                {
-                    case nameof(output.UserId):
-                        output.UserId = claim.Value;
-                        break;
-                }
-            }
+                UserId = info.UserId,
+                UserLoginId = info.UserLoginId,
+            };
             return await Task.FromResult(output);
         }
     }

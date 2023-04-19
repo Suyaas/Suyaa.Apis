@@ -23,8 +23,6 @@ namespace Suyaa.Apis.Full
     /// </summary>
     public class Startup : Suyaa.Microservice.Startup
     {
-        private const string Cors_Policy = "AllCors";
-
         /// <summary>
         /// 启动器
         /// </summary>
@@ -39,9 +37,6 @@ namespace Suyaa.Apis.Full
             this.Import<Base.Apps.ModuleStartup>();
             this.Import<Lark.Apps.ModuleStartup>();
             this.Import<User.Apps.ModuleStartup>();
-
-            // 添加跨域过滤器
-            this.AddFilter<CrosActionFilter>();
         }
 
         protected override void OnConfigureServices(IServiceCollection services)
@@ -57,10 +52,6 @@ namespace Suyaa.Apis.Full
 
         protected override void OnConfigure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // 全局跨域
-            //app.UseCors(Cors_Policy);
-            //app.UseAllCors();
-
             base.OnConfigure(app, env);
 
             // 使用UI

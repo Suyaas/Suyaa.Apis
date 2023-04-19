@@ -18,7 +18,7 @@ namespace Suyaa.Apis.Entities
         /// <summary>
         /// 创建用户编号
         /// </summary>
-        long CreatorUserNo { get; set; }
+        long CreatorUserId { get; set; }
 
         /// <summary>
         /// 创建时间

@@ -18,7 +18,7 @@ namespace Suyaa.Apis.Entities
         /// <summary>
         /// 删除用户编号
         /// </summary>
-        long? DeleterUserNo { get; set; }
+        long? DeleterUserId { get; set; }
 
         /// <summary>
         /// 删除时间

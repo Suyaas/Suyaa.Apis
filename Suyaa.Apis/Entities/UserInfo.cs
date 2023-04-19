@@ -18,16 +18,8 @@ namespace Suyaa.Apis.Entities
     /// 用户信息
     /// </summary>
     [Table("user_info")]
-    public class UserInfo : NeatEntity
+    public class UserInfo : AutoIncrementKeyEntity
     {
-        /// <summary>
-        /// 用户编号
-        /// </summary>
-        [Description("用户名")]
-        [Column(nameof(UserNo), TypeName = "bigint")]
-        [Index(Unique = true)]
-        public virtual long UserNo { get; set; } = 0;
-
         /// <summary>
         /// 用户名
         /// </summary>

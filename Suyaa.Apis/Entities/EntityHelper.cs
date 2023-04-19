@@ -16,10 +16,10 @@ namespace Suyaa.Apis.Entities
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="userNo"></param>
-        public static void FillCreationInfo(this ICreationEntity entity, int userNo)
+        public static void FillCreationInfo(this ICreationEntity entity, long userId)
         {
             entity.CreationTime = DateTime.Now;
-            entity.CreatorUserNo = userNo;
+            entity.CreatorUserId = userId;
         }
 
         /// <summary>
@@ -27,10 +27,10 @@ namespace Suyaa.Apis.Entities
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="userNo"></param>
-        public static void FillModificationInfo(this IModificationEntity entity, int userNo)
+        public static void FillModificationInfo(this IModificationEntity entity, long userId)
         {
             entity.LastModificationTime = DateTime.Now;
-            entity.LastModifierUserNo = userNo;
+            entity.LastModifierUserId = userId;
         }
 
         /// <summary>
@@ -38,10 +38,10 @@ namespace Suyaa.Apis.Entities
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="userNo"></param>
-        public static void FillDeletionInfo(this IDeletionEntity entity, int userNo)
+        public static void FillDeletionInfo(this IDeletionEntity entity, long userId)
         {
             entity.DeletionTime = DateTime.Now;
-            entity.DeleterUserNo = userNo;
+            entity.DeleterUserId = userId;
             entity.IsDeleted = true;
         }
     }

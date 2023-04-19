@@ -1,7 +1,10 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Suyaa.Apis.Attributes;
+using Suyaa.Apis.Dependency;
 using Suyaa.Apis.User.Apps.Jwt.Dto;
 using Suyaa.Apis.User.Cores.Jwt;
+using Suyaa.Apis.User.Cores.Jwt.Dtos;
 using Suyaa.Apis.User.Cores.Jwt.Stos;
 using Suyaa.Microservice.Dependency;
 using System;
@@ -11,6 +14,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Suyaa.Microservice.Exceptions;
 
 namespace Suyaa.Apis.User.Apps.Jwt
 {
@@ -18,7 +22,7 @@ namespace Suyaa.Apis.User.Apps.Jwt
     /// Jwt
     /// </summary>
     [App("User/Jwt")]
-    public class JwtApp : ServiceApp
+    public class JwtApp : ControllerBase, IServiceApp
     {
         private readonly IJwtCore _jwtCore;
 
@@ -74,17 +78,6 @@ namespace Suyaa.Apis.User.Apps.Jwt
                 Token = tokenNew,
                 RenewalTime = DateTimeOffset.Now.AddHours(1).ToUnixTimeSeconds()
             };
-        }
-
-        /// <summary>
-        /// 验证Token登录
-        /// </summary>
-        /// <returns></returns>
-        [Get]
-        [JwtAuthorize]
-        public async Task Verify()
-        {
-            await Task.CompletedTask;
         }
     }
 }

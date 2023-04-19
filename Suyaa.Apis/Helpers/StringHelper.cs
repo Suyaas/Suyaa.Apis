@@ -1,6 +1,12 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using Suyaa.Apis.Dependency;
+using Suyaa.Helpers;
+using Suyaa.Microservice.Exceptions;
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,6 +41,52 @@ namespace Suyaa.Apis.Helpers
                 }
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// 读取Token
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static JwtInfo GetJwtInfo(this string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(JwtInfo.JWT_KEY);
+            JwtSecurityToken jwt;
+            // 检验Token
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                }, out SecurityToken validatedToken);
+                jwt = (JwtSecurityToken)validatedToken;
+            }
+            catch
+            {
+                throw new FriendlyException($"Jwt信息无效");
+            }
+            if (jwt is null) throw new FriendlyException("Jwt信息无效");
+            JwtInfo info = new JwtInfo();
+            //读取信息
+            foreach (var claim in jwt.Claims)
+            {
+                switch (claim.Type)
+                {
+                    // 登录用户
+                    case nameof(info.UserId):
+                        info.UserId = claim.Value.ToLong();
+                        break;
+                    // 登录用户
+                    case nameof(info.UserLoginId):
+                        info.UserLoginId = claim.Value;
+                        break;
+                }
+            }
+            return info;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Suyaa.Apis.Entities
         /// </summary>
         [Column("last_modifier_user_no")]
         [Description("最后修改用户编号")]
-        public virtual long LastModifierUserNo { get; set; } = 0;
+        public virtual long LastModifierUserId { get; set; } = 0;
 
         /// <summary>
         /// 最后修改时间
@@ -38,7 +38,7 @@ namespace Suyaa.Apis.Entities
         [Column("deleter_user_no")]
         [StringLength(50)]
         [Description("删除用户编号")]
-        public virtual long? DeleterUserNo { get; set; }
+        public virtual long? DeleterUserId { get; set; }
 
         /// <summary>
         /// 删除时间
