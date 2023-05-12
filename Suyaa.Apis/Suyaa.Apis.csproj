@@ -9,10 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Suyaa.Data.PostgreSQL" Version="1.0.2304.3" />
-    <PackageReference Include="Suyaa.Data.Sqlite" Version="1.0.2304.3" />
+    <PackageReference Include="Suyaa.EFCore.PostgreSQL" Version="1.1.2305.5" />
+    <PackageReference Include="Suyaa.EFCore.Sqlite" Version="1.1.2305.5" />
     <PackageReference Include="Suyaa.Microservice" Version="1.4.2304.18" />
-    <PackageReference Include="Suyaa.Script" Version="1.0.2304.3" />
+    <PackageReference Include="Suyaa.Script" Version="1.1.2305.4" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.28.1" />
   </ItemGroup>
 

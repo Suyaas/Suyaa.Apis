@@ -1,6 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using Suyaa.Apis.Dependency;
-using Suyaa.Helpers;
+using Suyaa;
 using Suyaa.Microservice.Exceptions;
 using System;
 using System.Collections.Generic;

@@ -10,42 +10,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Suyaa.Data.Entities;
+using Suyaa.Data.Dependency;
 
 namespace Suyaa.Apis.Base.Entities.Users
 {
     /// <summary>
     /// 用户信息
     /// </summary>
-    [Table("user_info", Schema = "base")]
+    [DbTable(Convert = DbNameConvertTypes.UnderlineLower, Schema = "base")]
     [Description("用户信息")]
     public class UserInfo : NeatEntity
     {
         /// <summary>
         /// 用户编号 - 唯一索引
         /// </summary>
-        [Column("user_no")]
+        [DbColumn(Convert = DbNameConvertTypes.UnderlineLower)]
+        [DbColumnType(DbColumnTypes.Int)]
         [Description("用户编码")]
-        [Index(Unique = true)]
+        [DbIndex(Unique = true)]
         public virtual int UserNo { get; set; } = 0;
         /// <summary>
         /// 用户账号 - 索引
         /// </summary>
-        [Column("user_account", TypeName = "varchar(100)")]
+        [DbColumn(Convert = DbNameConvertTypes.UnderlineLower)]
+        [DbColumnType(DbColumnTypes.Varchar, 100)]
         [StringLength(100)]
         [Description("账号")]
-        [Index]
+        [DbIndex]
         public virtual string? UserAccount { get; set; }
         /// <summary>
         /// 密码
         /// </summary>
-        [Column("password", TypeName = "varchar(100)")]
+        [DbColumn(Convert = DbNameConvertTypes.UnderlineLower)]
+        [DbColumnType(DbColumnTypes.Varchar, 100)]
         [StringLength(100)]
         [Description("密码")]
         public virtual string? Password { get; set; }
         /// <summary>
         /// 昵称
         /// </summary>
-        [Column("nick", TypeName = "varchar(100)")]
+        [DbColumn(Convert = DbNameConvertTypes.UnderlineLower)]
+        [DbColumnType(DbColumnTypes.Varchar, 100)]
         [StringLength(100)]
         [Description("昵称")]
         public virtual string? Nick { get; set; }

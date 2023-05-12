@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using Suyaa.Apis.Basic;
 using Suyaa.Apis.Full;
 using System.Diagnostics;
-using Suyaa.Helpers;
 
 sy.Logger.GetCurrentLogger()
     .Use((string message) =>
