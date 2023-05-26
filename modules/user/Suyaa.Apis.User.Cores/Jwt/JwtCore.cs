@@ -8,7 +8,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Suyaa.Microservice.Exceptions;
+using Suyaa.Hosting;
 using Suyaa.Apis.Helpers;
 
 namespace Suyaa.Apis.User.Cores.Jwt

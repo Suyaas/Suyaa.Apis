@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Suyaa.Microservice;
-using Suyaa.Microservice.Extensions;
+using Suyaa.Hosting;
+using Suyaa.Hosting.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,7 +6,7 @@ using Suyaa.Apis.User.Apps.Jwt.Dto;
 using Suyaa.Apis.User.Cores.Jwt;
 using Suyaa.Apis.User.Cores.Jwt.Dtos;
 using Suyaa.Apis.User.Cores.Jwt.Stos;
-using Suyaa.Microservice.Dependency;
+using Suyaa.Hosting.Dependency;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -14,7 +14,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Suyaa.Microservice.Exceptions;
+using Suyaa;
 
 namespace Suyaa.Apis.User.Apps.Jwt
 {

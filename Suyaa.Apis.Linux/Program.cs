@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Suyaa.Apis.Basic;
 using Suyaa.Apis.Full;
-using Suyaa.Helpers;
 
 namespace Suyaa.Apis.Linux
 {
@@ -22,7 +21,7 @@ namespace Suyaa.Apis.Linux
                 .AddEnvironmentVariables(prefix: "ASPNETCORE_")
                 .AddCommandLine(args);
             var config = builder.Build();
-            Suyaa.Microservice.WebHost.CreateHostBuilder<Startup>(webBuilder => webBuilder.UseConfiguration(config), args).Build().Run();
+            Suyaa.Hosting.WebHost.CreateHostBuilder<Startup>(webBuilder => webBuilder.UseConfiguration(config), args).Build().Run();
         }
     }
 }

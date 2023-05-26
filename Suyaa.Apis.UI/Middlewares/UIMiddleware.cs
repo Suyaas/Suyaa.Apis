@@ -1,8 +1,8 @@
 ﻿using Suyaa.Logs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
-using Suyaa.Microservice.Exceptions;
-using Suyaa.Microservice.Results;
+using Suyaa.Hosting;
+using Suyaa.Hosting.Results;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -33,8 +33,8 @@ namespace Suyaa.Apis.UI.Middlewares
             _next = next;
             _options = options;
             //Debug.WriteLine($"[UI] {_path}");
-            if (options is null) throw new FriendlyException($"缺少UI路径配置");
-            if (options.Paths.Count <= 0) throw new FriendlyException($"缺少UI路径配置");
+            if (options is null) throw new HostFriendlyException($"缺少UI路径配置");
+            if (options.Paths.Count <= 0) throw new HostFriendlyException($"缺少UI路径配置");
             logger.Debug($"UIMiddleware '{options.Paths.Count}' Loading ...", "Middlewares");
         }
 

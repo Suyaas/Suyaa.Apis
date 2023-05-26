@@ -7,8 +7,8 @@ using Suyaa.Apis.User.Apps.Jwt.Dto;
 using Suyaa.Apis.User.Cores.Jwt;
 using Suyaa.Apis.User.Cores.Jwt.Dtos;
 using Suyaa.Apis.User.Cores.Jwt.Stos;
-using Suyaa.Microservice.Dependency;
-using Suyaa.Microservice.Exceptions;
+using Suyaa.Hosting.Dependency;
+using Suyaa.Hosting;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -67,7 +67,7 @@ namespace Suyaa.Apis.User.Apps.User
         public async Task<JwtInfoOutput> Verify()
         {
             var info = (JwtInfo?)this.RouteData.Values[JwtInfo.ROUTER_KEY];
-            if (info is null) throw new FriendlyException($"信息获取失败");
+            if (info is null) throw new HostFriendlyException($"信息获取失败");
             JwtInfoOutput output = new JwtInfoOutput()
             {
                 UserId = info.UserId,

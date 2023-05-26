@@ -1,5 +1,5 @@
 ﻿using Suyaa.Data;
-using Suyaa.Microservice.Exceptions;
+using Suyaa.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +35,7 @@ namespace Suyaa.Apis.Dependency
         /// <exception cref="FriendlyException"></exception>
         public Connections AddConnectionInfo(string key, IDatabaseConnectionInfo connectionInfo)
         {
-            if (_connectionInfos.ContainsKey(key)) throw new FriendlyException($"存在重复的'{key}'连接信息");
+            if (_connectionInfos.ContainsKey(key)) throw new HostFriendlyException($"存在重复的'{key}'连接信息");
             _connectionInfos.Add(key, connectionInfo);
             return this;
         }
@@ -51,7 +51,7 @@ namespace Suyaa.Apis.Dependency
         {
             foreach (var type in types)
             {
-                if (_types.ContainsKey(type)) throw new FriendlyException($"已有类型为'{type.FullName}'的配置信息");
+                if (_types.ContainsKey(type)) throw new HostFriendlyException($"已有类型为'{type.FullName}'的配置信息");
                 _types.Add(type, key);
             }
             return this;
@@ -66,9 +66,9 @@ namespace Suyaa.Apis.Dependency
         public IDatabaseConnection FindConnection<T>()
         {
             var type = typeof(T);
-            if (!_types.ContainsKey(type)) throw new FriendlyException($"未找到类型为'{type.FullName}'的配置信息");
+            if (!_types.ContainsKey(type)) throw new HostFriendlyException($"未找到类型为'{type.FullName}'的配置信息");
             string key = _types[type];
-            if (!_connectionInfos.ContainsKey(key)) throw new FriendlyException($"未找到名称为'{key}'的连接信息");
+            if (!_connectionInfos.ContainsKey(key)) throw new HostFriendlyException($"未找到名称为'{key}'的连接信息");
             return new DatabaseConnection(_connectionInfos[key]);
         }
     }

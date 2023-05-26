@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using System.Security.AccessControl;
-using Suyaa.Microservice.Extensions;
+using Suyaa.Hosting;
 using Suyaa.Apis.Basic.ActionFilters;
 using Suyaa.Apis.UI.Helpers;
 using Suyaa.Apis.Basic.Helpers;
@@ -21,7 +21,7 @@ namespace Suyaa.Apis.Full
     /// <summary>
     /// 启动器
     /// </summary>
-    public class Startup : Suyaa.Microservice.Startup
+    public class Startup : Suyaa.Hosting.StartupBase
     {
         /// <summary>
         /// 启动器
@@ -31,7 +31,6 @@ namespace Suyaa.Apis.Full
 
         protected override void OnInitialize()
         {
-            base.OnInitialize();
             this.Import<ModuleStartup>();
             this.Import<Common.Apps.ModuleStartup>();
             this.Import<Base.Apps.ModuleStartup>();
@@ -41,8 +40,6 @@ namespace Suyaa.Apis.Full
 
         protected override void OnConfigureServices(IServiceCollection services)
         {
-            base.OnConfigureServices(services);
-
             // 添加UI配置
             services.AddUI(opt =>
             {
@@ -52,8 +49,6 @@ namespace Suyaa.Apis.Full
 
         protected override void OnConfigure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            base.OnConfigure(app, env);
-
             // 使用UI
             app.UseUI();
             // 使用默认页

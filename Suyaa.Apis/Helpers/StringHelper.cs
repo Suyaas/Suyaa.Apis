@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using Suyaa.Apis.Dependency;
 using Suyaa;
-using Suyaa.Microservice.Exceptions;
+using Suyaa.Hosting;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -67,9 +67,9 @@ namespace Suyaa.Apis.Helpers
             }
             catch
             {
-                throw new FriendlyException($"Jwt信息无效");
+                throw new HostFriendlyException($"Jwt信息无效");
             }
-            if (jwt is null) throw new FriendlyException("Jwt信息无效");
+            if (jwt is null) throw new HostFriendlyException("Jwt信息无效");
             JwtInfo info = new JwtInfo();
             //读取信息
             foreach (var claim in jwt.Claims)

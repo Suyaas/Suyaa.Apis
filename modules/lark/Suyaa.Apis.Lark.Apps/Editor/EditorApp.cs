@@ -1,7 +1,7 @@
 ﻿using Suyaa.Apis.Lark.Apps.Editor.Stos;
 using Suyaa.Apis.Lark.Cores.Editor;
 using Suyaa.Apis.Services.ApiManager;
-using Suyaa.Microservice.Dependency;
+using Suyaa.Hosting.Dependency;
 using System;
 using System.Collections.Generic;
 using System.IO;

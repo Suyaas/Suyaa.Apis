@@ -1,5 +1,5 @@
 ﻿using Suyaa.Script;
-using Suyaa.Microservice.Dependency;
+using Suyaa.Hosting.Dependency;
 using System;
 using System.Collections.Generic;
 using System.Linq;

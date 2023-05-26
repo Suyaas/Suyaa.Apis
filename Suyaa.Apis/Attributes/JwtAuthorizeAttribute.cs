@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Suyaa.Microservice.Exceptions;
+using Suyaa.Hosting;
 using Suyaa.Apis.Dependency;
 
 namespace Suyaa.Apis.Attributes
@@ -26,11 +26,11 @@ namespace Suyaa.Apis.Attributes
         {
             // 检测头部信息
             var request = context.HttpContext.Request;
-            if (!request.Headers.ContainsKey(KEY_TOKEN)) throw new FriendlyException($"授权无效");
+            if (!request.Headers.ContainsKey(KEY_TOKEN)) throw new HostFriendlyException($"授权无效");
             string token = request.Headers[KEY_TOKEN].ToString();
             // 检测Jwt信息
             var info = token.GetJwtInfo();
-            if (info.UserId <= 0) throw new FriendlyException($"授权无效");
+            if (info.UserId <= 0) throw new HostFriendlyException($"授权无效");
             // 填充信息
             context.RouteData.Values[JwtInfo.ROUTER_KEY] = info;
             base.OnActionExecuting(context);

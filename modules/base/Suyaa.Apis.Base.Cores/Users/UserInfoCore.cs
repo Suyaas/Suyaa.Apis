@@ -1,5 +1,5 @@
 ﻿using Suyaa.Apis.Base.Entities.Users;
-using Suyaa.Microservice.Results;
+using Suyaa.Hosting.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;

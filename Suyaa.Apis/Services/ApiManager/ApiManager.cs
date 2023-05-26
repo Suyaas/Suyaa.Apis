@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Suyaa.Microservice.Exceptions;
+using Suyaa.Hosting;
 
 namespace Suyaa.Apis.Services.ApiManager
 {

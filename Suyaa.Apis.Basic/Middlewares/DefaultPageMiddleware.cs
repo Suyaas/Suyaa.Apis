@@ -1,8 +1,8 @@
 ﻿using Suyaa.Logs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
-using Suyaa.Microservice.Exceptions;
-using Suyaa.Microservice.Results;
+using Suyaa.Hosting;
+using Suyaa.Hosting.Results;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

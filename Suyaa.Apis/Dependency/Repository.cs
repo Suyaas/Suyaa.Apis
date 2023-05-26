@@ -14,6 +14,7 @@ namespace Suyaa.Apis.Dependency
     /// </summary>
     public class Repository<TClass, Tid> : Suyaa.Data.Repository<TClass, Tid>
         where TClass : class, IEntity<Tid>
+        where Tid : notnull
     {
         // 连接集合
         private readonly IConnections _connections;
@@ -22,7 +23,7 @@ namespace Suyaa.Apis.Dependency
         /// 数据仓库
         /// </summary>
         /// <param name="connections"></param>
-        public Repository(IConnections connections):base(connections.FindConnection<TClass>())
+        public Repository(IConnections connections) : base(connections.FindConnection<TClass>())
         {
             _connections = connections;
         }

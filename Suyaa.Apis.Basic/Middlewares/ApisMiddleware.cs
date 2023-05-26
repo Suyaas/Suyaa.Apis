@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Suyaa.Apis.Services.ApiManager;
 using Suyaa.Apis.Services.LarkScriptFunctions;
-using Suyaa.Microservice.Exceptions;
-using Suyaa.Microservice.Results;
+using Suyaa.Hosting;
+using Suyaa.Hosting.Results;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -61,7 +61,7 @@ namespace Suyaa.Apis.Basic.Middlewares
             {
                 string apiUrl = url.Substring(5);
                 string fullPath = sy.IO.CombinePath(_path, apiUrl + ".lark");
-                if (!sy.IO.FileExists(fullPath)) throw new FriendlyException($"脚本文件'{apiUrl}'未找到");
+                if (!sy.IO.FileExists(fullPath)) throw new HostFriendlyException($"脚本文件'{apiUrl}'未找到");
                 // 加载脚本
                 string script = sy.IO.ReadUtf8FileContent(fullPath);
                 var larkEngineCore = _provider.GetRequiredService<ILarkEngineCore>();

@@ -1,8 +1,8 @@
 ﻿using Suyaa;
 using Microsoft.AspNetCore.Mvc;
 using Suyaa.Apis.Common.Apps.Assemblies.Dtos;
-using Suyaa.Microservice.Dependency;
-using Suyaa.Microservice.Results;
+using Suyaa.Hosting.Dependency;
+using Suyaa.Hosting.Results;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

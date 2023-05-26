@@ -2,8 +2,7 @@
 using Suyaa.Logs.Loggers;
 using Microsoft.Extensions.DependencyInjection;
 using Suyaa.Apis.Services.ApiManager;
-using Suyaa.Microservice;
-using Suyaa.Microservice.Extensions;
+using Suyaa.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;

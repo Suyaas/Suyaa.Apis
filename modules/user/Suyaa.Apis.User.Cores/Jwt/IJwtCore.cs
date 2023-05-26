@@ -1,6 +1,6 @@
 ﻿using Suyaa.Apis.User.Cores.Jwt.Dtos;
 using Suyaa.Apis.User.Cores.Jwt.Stos;
-using Suyaa.Microservice.Dependency;
+using Suyaa.Hosting.Dependency;
 using System;
 using System.Collections.Generic;
 using System.Linq;

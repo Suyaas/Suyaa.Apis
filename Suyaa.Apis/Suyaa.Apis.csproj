@@ -11,9 +11,9 @@
   <ItemGroup>
     <PackageReference Include="Suyaa.EFCore.PostgreSQL" Version="1.1.2305.5" />
     <PackageReference Include="Suyaa.EFCore.Sqlite" Version="1.1.2305.5" />
-    <PackageReference Include="Suyaa.Microservice" Version="1.4.2304.18" />
+    <PackageReference Include="Suyaa.Hosting" Version="1.5.2305.20" />
     <PackageReference Include="Suyaa.Script" Version="1.1.2305.4" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.28.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
   </ItemGroup>
 
 </Project>
