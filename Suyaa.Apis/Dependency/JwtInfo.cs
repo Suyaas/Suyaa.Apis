@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Suyaa.Hosting.Dependency;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Suyaa.Apis.Dependency
     /// <summary>
     /// Jwt信息
     /// </summary>
-    public class JwtInfo
+    public class JwtInfo : IJwtData
     {
         /// <summary>
         /// JWT密钥

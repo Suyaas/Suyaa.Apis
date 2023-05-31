@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Suyaa.Apis.Attributes;
 using Suyaa.Apis.Dependency;
 using Suyaa.Apis.User.Apps.Jwt.Dto;
 using Suyaa.Apis.User.Cores.Jwt;
@@ -15,6 +14,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Suyaa;
+using Suyaa.Hosting.Attributes;
 
 namespace Suyaa.Apis.User.Apps.Jwt
 {

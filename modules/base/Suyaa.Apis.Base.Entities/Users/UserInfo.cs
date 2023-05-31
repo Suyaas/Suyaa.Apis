@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Suyaa.Data.Entities;
 using Suyaa.Data.Dependency;
+using Suyaa.Data.Dependency.Attributes;
 
 namespace Suyaa.Apis.Base.Entities.Users
 {

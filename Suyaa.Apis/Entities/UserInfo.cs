@@ -10,7 +10,6 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Suyaa.Apis.Helpers;
-using Suyaa.Apis.Attributes;
 
 namespace Suyaa.Apis.Entities
 {

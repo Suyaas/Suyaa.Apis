@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Suyaa.Hosting.Attributes;
+using Suyaa.Hosting.Services;
 
 namespace Suyaa.Apis.Common.Apps.Assemblies
 {

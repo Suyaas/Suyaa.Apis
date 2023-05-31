@@ -15,6 +15,8 @@ using Suyaa.Hosting;
 using Suyaa.Apis.Basic.ActionFilters;
 using Suyaa.Apis.UI.Helpers;
 using Suyaa.Apis.Basic.Helpers;
+using Suyaa.Hosting.Dependency;
+using Suyaa.Apis.Dependency;
 
 namespace Suyaa.Apis.Full
 {
@@ -45,6 +47,8 @@ namespace Suyaa.Apis.Full
             {
                 opt.AddPath("ui");
             });
+            // 添加Jwt数据
+            services.AddScoped<IJwtData, JwtInfo>();
         }
 
         protected override void OnConfigure(IApplicationBuilder app, IWebHostEnvironment env)
